@@ -101,21 +101,29 @@ code {
 }
 
 .temp {
-  display: grid;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
   padding: 1rem 2rem;
   text-align: center;
   background-color: rgb(100, 100, 146);
+}
 
+.main-data-temp {
+  text-align: start;
+}
+
+.info-temp {
+  text-align: end;
 }
 
 .foreCast-list {
   display: flex;
-  justify-content: space-evenly;
-  padding: 0;
   margin: 0;
-  padding: 30px 5px;
+  padding: 20px;
   background-color: black;
-
+  white-space: nowrap;
+  overflow-x: scroll;
 }
 
 .foreCast-data {
@@ -123,7 +131,7 @@ code {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 30px;
+  padding: 30px 20px;
   background-color: bisque;
 }
 

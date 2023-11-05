@@ -7,5 +7,5 @@
 //Geocoding
 //http://api.openweathermap.org/geo/1.0/direct?q={city name},{state code},{country code}&limit={limit}&appid={API key}
 
-//Map
+//Map (potential)
 //https://tile.openweathermap.org/map/{layer}/{z}/{x}/{y}.png?appid={API key}
