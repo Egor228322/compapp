@@ -7,10 +7,14 @@ function Temp({ locationData }) {
   const { C, F, weather, dt, timezone, name } = locationData;
   const condition = weather[0].main;
 
-    const date = new Date(dt + timezone);
-    const hours = `${date.getHours()}`.padStart(2, "0");
+    let date = new Date(dt + timezone);
+    date = date.toUTCString().slice(5, -7);
+    
+    /* const hours = `${date.getHours()}`.padStart(2, "0");
     const minutes = `${date.getMinutes()}`.padStart(2, "0");
     const time = `${hours}:${minutes}`;
+    const date =  */
+
     
     function handleChangeMetric() {
       mode === 'c' ? setMode('f') : setMode('c');
@@ -20,7 +24,7 @@ function Temp({ locationData }) {
         <div className="temp">
             <div className="main-data-temp">
                 <h2><span>📍</span>{name}</h2>
-                <p>{time}</p>
+                <p>{date}</p>
             <h1>
                 {`${mode === 'c' ? C.temp : F.temp}°`} 
             </h1>
