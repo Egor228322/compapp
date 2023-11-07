@@ -1,9 +1,13 @@
 import { useEffect, useState } from "react"
-import Temp from "./components/Temp";
+// import Temp from "./components/Temp";
 import UpperBar from "./components/UpperBar";
 import DataField from "./Halves/DataField";
 import SideBar from "./Halves/SideBar";
 import Data from "./components/Data";
+import Temp from "./components/Temp";
+import ForeCast from "./components/ForeCast";
+import Widgets from "./components/Widgets";
+import DataMain from "./components/DataMain";
 /* import DataField from "./Halves/DataField" */
 /* import SideBar from "./Halves/SideBar" */
 /* import Test from "./components/Test"; */
@@ -18,8 +22,8 @@ function App() {
 
   const [query, setQuery] = useState('');
   const [curLocationData, setCurLocationData] = useState({});
-  const [isLoadingData, setIsLoadingData] = useState(false);
-  const [isLoadingForecast, setIsLoadingForecast] = useState(false);
+  const [isLoadingData, setIsLoadingData] = useState(true);
+  const [isLoadingForecast, setIsLoadingForecast] = useState(true);
   const [curForeCast, setCurForeCast] = useState([]);
 
   async function fetchCity(lat, lng) {
@@ -55,7 +59,7 @@ function App() {
           };
       
           setCurLocationData(updatedData);
-          isLoadingData(false);
+          setIsLoadingData(false);
           
         }
         catch (err) {
@@ -79,88 +83,93 @@ function App() {
 
   }, []);
 
+  const PopulateData = () => {
+    console.log(curLocationData)
+    if (Object.keys(curLocationData).length) {
+      console.log("rendering")
+      return <>
+        <Temp locationData={curLocationData} />
+        <ForeCast />
+        <Widgets />
+      </>
+    } else {
+      console.log("sdlkfj")
+      return <p>Loading...</p>
+    }
+  }
 
-  useEffect(function () {
-    navigator.geolocation.getCurrentPosition(function (pos) {
-      const { latitude: lat, longitude: lng } = pos.coords;
+  // useEffect(function () {
+  //   navigator.geolocation.getCurrentPosition(function (pos) {
+  //     const { latitude: lat, longitude: lon } = pos.coords;
       
-      fetchCity(lat, lng);
-
-    }, function () {
-      alert('Please turn on your geolocation')
-    })
-
-  }, []);
-
-  useEffect(function () {
-    navigator.geolocation.getCurrentPosition(function (pos) {
-      const { latitude: lat, longitude: lon } = pos.coords;
-      
-      async function fetchCity() {
-        try {
-          setIsLoadingData(true);
-          const res = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${KEY}`);
-          const data = await res.json();
+  //     async function fetchCity() {
+  //       try {
+  //         setIsLoadingData(true);
+  //         const res = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${KEY}`);
+  //         const data = await res.json();
           
             
-          const {
-               main: {
-                 temp,
-                 feels_like,
-                 temp_min,
-                 temp_max,
-               },
-          } = data;
+  //         const {
+  //              main: {
+  //                temp,
+  //                feels_like,
+  //                temp_min,
+  //                temp_max,
+  //              },
+  //         } = data;
               
-          const tempInCelsius = temp - 273.15;
-          const feelsLikeInCelsius = feels_like - 273.15;
-          const tempMinInCelsius = temp_min - 273.15;
-          const tempMaxInCelsius = temp_max - 273.15;
+  //         const tempInCelsius = temp - 273.15;
+  //         const feelsLikeInCelsius = feels_like - 273.15;
+  //         const tempMinInCelsius = temp_min - 273.15;
+  //         const tempMaxInCelsius = temp_max - 273.15;
               
-          const mainInCelsius = {
-            temp: Math.round(tempInCelsius),
-            feels_like: Math.round(feelsLikeInCelsius),
-            temp_min: Math.round(tempMinInCelsius),
-            temp_max: Math.round(tempMaxInCelsius),
-          };
+  //         const mainInCelsius = {
+  //           temp: Math.round(tempInCelsius),
+  //           feels_like: Math.round(feelsLikeInCelsius),
+  //           temp_min: Math.round(tempMinInCelsius),
+  //           temp_max: Math.round(tempMaxInCelsius),
+  //         };
       
-          const updatedData = {
-            ...data,
-            main: mainInCelsius,
-          };
+  //         const updatedData = {
+  //           ...data,
+  //           main: mainInCelsius,
+  //         };
       
-          setCurLocationData(updatedData);
-          isLoadingData(false);
+  //         setCurLocationData(updatedData);
+  //         isLoadingData(false);
           
-        }
-        catch (err) {
-          console.log(err);
-        }
-        finally {
-          console.log('fetch successful');
-          setIsLoadingData(false);
-        }
-      }
-      fetchCity();
+  //       }
+  //       catch (err) {
+  //         console.log(err);
+  //       }
+  //       finally {
+  //         console.log('fetch successful');
+  //         setIsLoadingData(false);
+  //       }
+  //     }
+  //     fetchCity();
 
-    }, function () {
-      alert('Please turn on your geolocation')
-    })
+  //   }, function () {
+  //     alert('Please turn on your geolocation')
+  //   })
 
-  }, []);
+  // }, []);
 
   console.log(curLocationData);
   console.log(curForeCast);
 
-
   return (
     <div className="global-layout">
       {/* {isLoading ? <p>Loading...</p> : <Test locationData={curLocationData} />} */}
-        {/* <SideBar />
+        <SideBar />
         <DataField>
-          <UpperBar />
-          {isLoadingData && isLoadingForecast ? <p>Loading...</p> : <Data locationData={curLocationData} />}
-        </DataField> */}
+        <UpperBar />
+          <Data>
+            <DataMain>
+              {PopulateData()}
+            </DataMain>
+          </Data>
+        </DataField>
     </div>
   )
 }

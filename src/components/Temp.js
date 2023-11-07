@@ -2,6 +2,8 @@ import { useState } from "react";
 
 function Temp({ locationData }) {
 
+    console.log(locationData)
+
   const [mode, setMode] = useState('c');
   const [temp, setTemp] = useState(locationData.main.temp);
   const [feels_like, setFeels_like] = useState(locationData.main.feels_like);

@@ -1,9 +1,9 @@
 import DataMain from "./DataMain"
 
-function Data({ curLocation }) {
+function Data({ children }) {
     return (
         <div className="data-container">
-            <DataMain curLocation={curLocation} />
+            {children}
         </div>
     )
 }

@@ -1,7 +1,7 @@
 import Data from "../components/Data"
 import UpperBar from "../components/UpperBar"
 
-function DataField({children}) {
+function DataField({ children }) {
     return (
         <div>
           {children}

@@ -1,0 +1,12 @@
+.foreCast-list {
+    display: flex;
+    margin: 0;
+    padding: 20px;
+    background-color: black;
+    white-space: nowrap;
+    overflow-x: scroll;
+}
+
+.foreCast-list::-webkit-scrollbar {
+    display: none;
+}

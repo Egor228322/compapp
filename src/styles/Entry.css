@@ -1,0 +1,15 @@
+.date {
+    grid-column: 1;
+    grid-row: 1;
+}
+
+.time {
+    grid-column: 1;
+    grid-row: 2;
+}
+
+.location {
+    grid-column: 2;
+    grid-row: span 2;
+    align-self: center;
+}

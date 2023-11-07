@@ -1,0 +1,16 @@
+.temp {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: 1rem 2rem;
+    text-align: center;
+    background-color: rgb(100, 100, 146);
+}
+
+.main-data-temp {
+    text-align: start;
+}
+
+.info-temp {
+    text-align: end;
+}

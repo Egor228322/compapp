@@ -1,0 +1,12 @@
+.entry {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    /* grid-template-rows: 1fr 1fr; */
+    padding: 5px;
+    margin-bottom: 15px;
+}
+
+.history {
+    margin-top: 40px;
+    background-color: azure;
+}
