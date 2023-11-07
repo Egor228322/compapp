@@ -5,7 +5,7 @@ function FavHisButton() {
         <div className="selection-his-fav">
             <h1>Please Select Type</h1>
             <div>
-                <button className="btn-selection">Favorites</button>
+                <a href="/" className="btn-selection">Favorites</a>
                 <button className="btn-selection">History</button>
             </div>
         </div>
