@@ -38,27 +38,47 @@ function App() {
                  feels_like,
                  temp_min,
                  temp_max,
-               },
+            },
+            weather,
+            dt,
+            timezone,
+            name,
+            coords
           } = data;
               
-          const tempInCelsius = temp - 273.15;
-          const feelsLikeInCelsius = feels_like - 273.15;
-          const tempMinInCelsius = temp_min - 273.15;
-          const tempMaxInCelsius = temp_max - 273.15;
+          const tempInCelsius = Math.round(temp - 273.15);
+          const feelsLikeInCelsius = Math.round(feels_like - 273.15);
+          const tempMinInCelsius = Math.round(temp_min - 273.15);
+          const tempMaxInCelsius = Math.round(temp_max - 273.15);
+          const milliSecondsDt = dt * 1000;
+          const milliSecondsTime = timezone * 1000;
+
+          const tempInFahrenheit = Math.round((tempInCelsius * 9 / 5) + 32);
+          const feelsLikeInFahrenheit = Math.round((feelsLikeInCelsius * 9 / 5) + 32);
+          const tempMinInFahrenheit = Math.round((tempMinInCelsius * 9 / 5) + 32);
+          const tempMaxInFahrenheit = Math.round((tempMaxInCelsius * 9 / 5) + 32);
               
-          const mainInCelsius = {
-            temp: Math.round(tempInCelsius),
-            feels_like: Math.round(feelsLikeInCelsius),
-            temp_min: Math.round(tempMinInCelsius),
-            temp_max: Math.round(tempMaxInCelsius),
+          const destructuredData = {
+            C: {
+              temp: Math.round(tempInCelsius),
+              feelsLike: Math.round(feelsLikeInCelsius),
+              tempMin: Math.round(tempMinInCelsius),
+              tempMax: Math.round(tempMaxInCelsius),
+            },
+            F: {
+              temp: tempInFahrenheit,
+              feelsLike: feelsLikeInFahrenheit,
+              tempMin: tempMinInFahrenheit,
+              tempMax: tempMaxInFahrenheit,
+            },
+            weather,
+            dt: milliSecondsDt,
+            timezone: milliSecondsTime,
+            name,
+            coords
           };
       
-          const updatedData = {
-            ...data,
-            main: mainInCelsius,
-          };
-      
-          setCurLocationData(updatedData);
+          setCurLocationData(destructuredData);
           setIsLoadingData(false);
           
         }

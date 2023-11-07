@@ -2,36 +2,33 @@ import { useState } from "react";
 
 function Temp({ locationData }) {
 
-    console.log(locationData)
-
   const [mode, setMode] = useState('c');
-  const [temp, setTemp] = useState(locationData.main.temp);
-  const [feels_like, setFeels_like] = useState(locationData.main.feels_like);
-  
+
+  const { C, F, weather, dt, timezone, name } = locationData;
+  const condition = weather[0].main;
+
+    const date = new Date(dt + timezone);
+    const hours = `${date.getHours()}`.padStart(2, "0");
+    const minutes = `${date.getMinutes()}`.padStart(2, "0");
+    const time = `${hours}:${minutes}`;
+    
     function handleChangeMetric() {
-      if (mode === 'c') {
-        setTemp(Math.round((temp * 9 / 5) + 32));
-        setFeels_like(Math.round((feels_like * 5 / 9) + 32));
-      } else {
-        setTemp(Math.round((temp - 32) * (5 / 9)));
-        setFeels_like(Math.round((feels_like - 32) * (5 / 9)));
-      }
-      setMode(mode === 'c' ? 'f' : 'c');
+      mode === 'c' ? setMode('f') : setMode('c');
     }
 
     return (
         <div className="temp">
             <div className="main-data-temp">
-                <h2><span>📍</span>{locationData.name}</h2>
-                <p>Sun, 5 November 14:58</p>
+                <h2><span>📍</span>{name}</h2>
+                <p>{time}</p>
             <h1>
-                {`${temp}°`} 
+                {`${mode === 'c' ? C.temp : F.temp}°`} 
             </h1>
             </div>
             <div className="info-temp">
-                <p>{locationData.weather[0].main}</p>
-                <p>{locationData.main.temp_max} / {locationData.main.temp_min}°</p>
-                <p>Feels like: {`${feels_like}°`}</p>
+                <p>{condition}</p>
+            <p>{mode === 'c' ? `${C.tempMax} / ${C.tempMin}°` : `${F.tempMax} / ${F.tempMin}°`}</p>
+                <p>Feels like: {mode === 'c' ? `${C.feelsLike}°` : `${F.feelsLike}°`}</p>
             </div>
             </div>
     )
