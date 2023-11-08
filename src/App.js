@@ -15,6 +15,7 @@ import DataMain from "./components/DataMain";
 /* import Data from "./components/Data"; */
 
 import fetchCity from "./AJAX/curLocationData";
+import getForeCast from "./AJAX/curForecastData";
 
 
 const KEY = '94db76b31b0a5fae229f081992ccef80';
@@ -34,44 +35,11 @@ function App() {
     navigator.geolocation.getCurrentPosition(function (pos) {
       const { latitude: lat, longitude: lng } = pos.coords;
       fetchCity(lat, lng, setIsLoadingData, setCurLocationData, KEY);
-      async function getForeCast() {
-        try {
-          setIsLoadingForecast(true);
-          const res = await fetch(`https://pro.openweathermap.org/data/2.5/forecast/hourly?lat=${lat}&lon=${lng}&appid=${KEY}`);
-          const data = await res.json();
-
-          const { list, city } = data;
-  
-
-
-
-
-
-
-
-
-
-
-
-
-
-          setIsLoadingForecast(false);
-          console.log(data);
-        }
-        catch (err) {
-          throw new Error('Something went wrong');
-        }
-        finally {
-          setIsLoadingForecast(false);
-        }
-      }
-      getForeCast();
+      getForeCast(lat, lng, setIsLoadingForecast, setCurForeCast, KEY);
     }, function () {
       alert('Please turn on your geolocation')
     });
   }, []);
-
-
 
   const PopulateData = () => {
     console.log(curLocationData)
