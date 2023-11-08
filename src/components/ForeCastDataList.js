@@ -5,7 +5,7 @@ function ForeCastDataList({forecast}) {
     return (
         <div>
             <ul className="foreCast-list">
-                {forecast.map((el, i) => <ForeCastData key={el} forecast={forecast[i]} />)}
+                {forecast.map((el, i) => <ForeCastData key={i} forecast={forecast[i]} />)}
             </ul>
         </div>
     )

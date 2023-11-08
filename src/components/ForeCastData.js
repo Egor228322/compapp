@@ -1,7 +1,5 @@
 
 function ForeCastData({ forecast }) {
-    console.log('Constructed path:', `../icons/${forecast.icon}.png`);
-    console.log('forecast.icon value:', forecast.icon);
     
     return (
         <div className="foreCast-data">
@@ -13,7 +11,7 @@ function ForeCastData({ forecast }) {
                     className='icon-forecast'>
                 </img>
             </figure>
-            <p className="weather-data">{forecast.temp}</p>
+            <p className="weather-data">{forecast.temp}°</p>
         </div>
     )
 }

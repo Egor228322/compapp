@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-// import Temp from "./components/Temp";
+
 import UpperBar from "./components/UpperBar";
 import DataField from "./Halves/DataField";
 import SideBar from "./Halves/SideBar";
@@ -8,11 +8,6 @@ import Temp from "./components/Temp";
 import ForeCast from "./components/ForeCast";
 import Widgets from "./components/Widgets";
 import DataMain from "./components/DataMain";
-/* import DataField from "./Halves/DataField" */
-/* import SideBar from "./Halves/SideBar" */
-/* import Test from "./components/Test"; */
-/* import UpperBar from "./components/UpperBar"; */
-/* import Data from "./components/Data"; */
 
 import fetchCity from "./AJAX/curLocationData";
 import getForeCast from "./AJAX/curForecastData";

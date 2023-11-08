@@ -23,7 +23,16 @@ function Temp({ locationData }) {
     return (
         <div className="temp">
             <div className="main-data-temp">
-                <h2><span>📍</span>{name}</h2>
+                <div className="location-temp">
+                <span><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="location-icon">
+  <path strokeLinecap="round" strokeLinejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z" />
+  <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z" />
+                    </svg>
+                    </span>
+                <h2>
+                    {name}
+                    </h2>
+                </div>
                 <p>{date}</p>
             <h1>
                 {`${mode === 'c' ? C.temp : F.temp}°`} 
@@ -39,3 +48,6 @@ function Temp({ locationData }) {
 }
 
 export default Temp;
+
+
+

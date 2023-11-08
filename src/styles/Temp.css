@@ -1,7 +1,7 @@
 .temp {
     display: flex;
     justify-content: space-between;
-    align-items: baseline;
+    align-items: flex-end;
     padding: 1rem 2rem;
     text-align: center;
     background-color: rgb(100, 100, 146);
@@ -9,6 +9,17 @@
 
 .main-data-temp {
     text-align: start;
+}
+
+.location-temp {
+    display: flex;
+    align-items: flex-end;
+    gap: 5px;
+}
+
+.location-icon {
+    height: 24px;
+    width: 24px;
 }
 
 .info-temp {
