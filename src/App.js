@@ -43,11 +43,11 @@ function App() {
 
   const PopulateData = () => {
     console.log(curLocationData)
-    if (Object.keys(curLocationData).length) {
+    if (Object.keys(curLocationData).length && curForeCast.length) {
       console.log("rendering")
       return <>
         <Temp locationData={curLocationData} />
-        <ForeCast />
+        <ForeCast forecast={curForeCast} />
         <Widgets />
       </>
     } else {

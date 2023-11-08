@@ -1,15 +1,19 @@
-function ForeCastData() {
 
-    const time = new Date();
-    const hours = `${time.getHours()}`.padStart(2, '0');
-    const minutes = `${time.getMinutes()}`.padStart(2, '0');
-    const curTime = `${hours}:${minutes}`;
+function ForeCastData({ forecast }) {
+    console.log('Constructed path:', `../icons/${forecast.icon}.png`);
+    console.log('forecast.icon value:', forecast.icon);
     
     return (
         <div className="foreCast-data">
-            <p className="weather-data">{curTime}</p>
-            <p className="weather-data">🌤️</p>
-            <p className="weather-data">20 °C</p>
+            <p className="weather-data">{forecast.time}</p>
+            <figure>
+                <img
+                    src={require(`../icons/${forecast.icon}.png`)}
+                    alt={forecast.description}
+                    className='icon-forecast'>
+                </img>
+            </figure>
+            <p className="weather-data">{forecast.temp}</p>
         </div>
     )
 }

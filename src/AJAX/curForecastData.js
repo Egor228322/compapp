@@ -7,7 +7,7 @@ export default async function getForeCast(lat, lng, setIsLoadingForecast, setCur
           const { list, city: { timezone } } = data;
           const mod = list.map(el => {
             let { dt, main: { temp }, weather } = el;
-            let { icon } = weather[0];
+            let { icon, description } = weather[0];
             const data = new Date((dt * 1000) + (timezone * 1000));
             const hours = `${data.getHours()}`.padStart(2, '0');
             const min = `${data.getMinutes()}`.padStart(2, '0');
@@ -15,7 +15,8 @@ export default async function getForeCast(lat, lng, setIsLoadingForecast, setCur
             return {
               time: time,
               temp: Math.round(temp),
-              icon
+              icon,
+              description
             }
           });
           

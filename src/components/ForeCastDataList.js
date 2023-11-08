@@ -1,12 +1,11 @@
 import ForeCastData from "./ForeCastData"
 
 
-function ForeCastDataList() {
+function ForeCastDataList({forecast}) {
     return (
         <div>
             <ul className="foreCast-list">
-                {Array.from({ length: 11 }, (_, i) => i + 1)
-                .map(el => <ForeCastData key={el} />)}
+                {forecast.map((el, i) => <ForeCastData key={el} forecast={forecast[i]} />)}
             </ul>
         </div>
     )

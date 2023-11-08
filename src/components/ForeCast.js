@@ -1,9 +1,10 @@
 import ForeCastDataList from "./ForeCastDataList"
 
-function ForeCast() {
+function ForeCast({ forecast }) {
+    console.log(forecast)
     return (
         <div>
-            <ForeCastDataList />
+            <ForeCastDataList forecast={forecast} />
         </div>
     )
 }
