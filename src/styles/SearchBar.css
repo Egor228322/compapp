@@ -1,0 +1,14 @@
+.search {
+    position: relative;
+}
+
+.search-suggestions {
+    position: absolute;
+    list-style: none;
+    background-color: white;
+    border: 1px solid #ccc;
+    max-height: 200px;
+    overflow-y: auto;
+    z-index: 1;
+    left: 38.75%;
+}

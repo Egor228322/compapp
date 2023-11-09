@@ -51,10 +51,9 @@ export default async function fetchCity(lat, lng, setIsLoadingData, setCurLocati
           
         }
         catch (err) {
-          console.log(err);
+          throw new Error('bad request')
         }
         finally {
-          console.log('fetch successful');
           setIsLoadingData(false);
         }
       }

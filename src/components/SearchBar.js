@@ -1,8 +1,18 @@
-function SearchBar() {
+import Suggestion from "./Suggestion"
+
+function SearchBar({ query, setQuery }) {
     return (
-        <div>
+        <div className="search">
             <label>search by city: </label>
-            <input type="text" placeholder="City name"></input>
+            <input
+                type="text"
+                placeholder="City name"
+                value={query}
+                onChange={(e) => setQuery(e.target.value)}>
+            </input>
+            <ul className="search-suggestions">
+                {Array.from({ length: 5 }, (_, i) => <Suggestion index={i} key={i}/>)}
+            </ul>
         </div>
     )
 }

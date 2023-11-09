@@ -3,7 +3,7 @@ export default async function getForeCast(lat, lng, setIsLoadingForecast, setCur
           setIsLoadingForecast(true);
           const res = await fetch(`https://pro.openweathermap.org/data/2.5/forecast/hourly?lat=${lat}&lon=${lng}&appid=${KEY}&cnt=19&units=metric`);
           const data = await res.json();
-          console.log(data);
+
           const { list, city: { timezone } } = data;
           const mod = list.map(el => {
             let { dt, main: { temp }, weather } = el;
