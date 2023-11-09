@@ -11,6 +11,9 @@ import DataMain from "./components/DataMain";
 
 import fetchCity from "./AJAX/curLocationData";
 import getForeCast from "./AJAX/curForecastData";
+import SearchBar from "./components/SearchBar";
+import Mode from "./components/Mode";
+import WidgetsMenu from "./components/WidgetsMenu";
 
 
 const KEY = '94db76b31b0a5fae229f081992ccef80';
@@ -20,6 +23,7 @@ function App() {
   const [query, setQuery] = useState('');
   const [curLocationData, setCurLocationData] = useState({});
   const [locationList, setLocationList] = useState([]);
+  const [isLoadingList, setIsLoadingList] = useState(false);
   const [isLoadingData, setIsLoadingData] = useState(true);
   const [isLoadingForecast, setIsLoadingForecast] = useState(true);
   const [curForeCast, setCurForeCast] = useState([]);
@@ -30,16 +34,34 @@ function App() {
     
     async function geoCode() {
       try {
+        setIsLoadingList(true);
         const res = await fetch(`http://api.openweathermap.org/geo/1.0/direct?q=${query}&limit=10&appid=${KEY}`, { signal: controller.signal });
         const data = await res.json();
+
+        data.map(el => {
+          const { lat, lon, country, state, name } = el;
+
+          const updatedData = {
+            lat,
+            lon,
+            country,
+            state,
+            name
+          };
+
+          return updatedData;
+
+        })
+        
         setLocationList(data);
-        console.log(data);
+        setIsLoadingList(false);
+
       }
       catch (err) {
         console.log('Bad request 💥💥💥')
       }
       finally {
-        console.log("fetch successful");
+        setIsLoadingList(false);
       }
     }
     if (!query) return;
@@ -54,10 +76,7 @@ function App() {
   useEffect(function () {
     console.log(locationList);
   }, [locationList]);
-
-
   
-
   useEffect(function () {
     navigator.geolocation.getCurrentPosition(function (pos) {
       const { latitude: lat, longitude: lng } = pos.coords;
@@ -85,7 +104,11 @@ function App() {
       {/* {isLoading ? <p>Loading...</p> : <Test locationData={curLocationData} />} */}
         <SideBar />
         <DataField>
-        <UpperBar query={query} setQuery={setQuery} />
+        <UpperBar>
+          <SearchBar query={query} setQuery={setQuery} locationList={locationList} />
+          <Mode />
+          <WidgetsMenu />
+        </UpperBar>
           <Data>
             <DataMain>
               {PopulateData()}

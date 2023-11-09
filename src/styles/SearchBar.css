@@ -12,3 +12,17 @@
     z-index: 1;
     left: 38.75%;
 }
+
+.search-item {
+    display: flex;
+    align-items: center;
+    padding: 4px;
+    justify-content: space-between;
+    gap: 30px;
+    white-space: nowrap;
+}
+
+.search-icon {
+    height: 24px;
+    width: 24px;
+}
