@@ -3,7 +3,7 @@
 function Suggestion({ data }) {
     
     return (
-        <li className="search-item">
+        <li className="search-item" value={`${data.lat}:${data.lon}`}>
             <span>
                 <svg
                     xmlns="http://www.w3.org/2000/svg"

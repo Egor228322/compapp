@@ -14,6 +14,7 @@ import getForeCast from "./AJAX/curForecastData";
 import SearchBar from "./components/SearchBar";
 import Mode from "./components/Mode";
 import WidgetsMenu from "./components/WidgetsMenu";
+import geoCode from "./AJAX/locationList";
 
 
 const KEY = '94db76b31b0a5fae229f081992ccef80';
@@ -29,54 +30,30 @@ function App() {
   const [curForeCast, setCurForeCast] = useState([]);
 
   useEffect(function () {
-
     const controller = new AbortController();
-    
-    async function geoCode() {
-      try {
-        setIsLoadingList(true);
-        const res = await fetch(`http://api.openweathermap.org/geo/1.0/direct?q=${query}&limit=10&appid=${KEY}`, { signal: controller.signal });
-        const data = await res.json();
 
-        data.map(el => {
-          const { lat, lon, country, state, name } = el;
-
-          const updatedData = {
-            lat,
-            lon,
-            country,
-            state,
-            name
-          };
-
-          return updatedData;
-
-        })
-        
-        setLocationList(data);
-        setIsLoadingList(false);
-
-      }
-      catch (err) {
-        console.log('Bad request 💥💥💥')
-      }
-      finally {
-        setIsLoadingList(false);
-      }
+    if (!query.length) {
+      setLocationList([]);
+    } else {
+      geoCode(setLocationList, setIsLoadingList, controller, query, KEY);
     }
-    if (!query) return;
-    geoCode();
-
+    
     return function () {
        controller.abort();
-      }
+    }
 
   }, [query]);
-
-  useEffect(function () {
-    console.log(locationList);
-  }, [locationList]);
   
+  useEffect(function () {
+    navigator.geolocation.getCurrentPosition(function (pos) {
+      const { latitude: lat, longitude: lng } = pos.coords;
+      fetchCity(lat, lng, setIsLoadingData, setCurLocationData, KEY);
+      getForeCast(lat, lng, setIsLoadingForecast, setCurForeCast, KEY);
+    }, function () {
+      alert('Please turn on your geolocation')
+    });
+  }, []);
+
   useEffect(function () {
     navigator.geolocation.getCurrentPosition(function (pos) {
       const { latitude: lat, longitude: lng } = pos.coords;

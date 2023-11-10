@@ -22,6 +22,11 @@
     white-space: nowrap;
 }
 
+.search-item:hover {
+    background-color: bisque;
+    cursor: pointer;
+}
+
 .search-icon {
     height: 24px;
     width: 24px;
