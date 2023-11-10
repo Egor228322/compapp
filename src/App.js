@@ -24,6 +24,7 @@ function App() {
   const [query, setQuery] = useState('');
   const [curLocationData, setCurLocationData] = useState({});
   const [locationList, setLocationList] = useState([]);
+  const [locationData, setLocationData] = useState({});
   const [isLoadingList, setIsLoadingList] = useState(false);
   const [isLoadingData, setIsLoadingData] = useState(true);
   const [isLoadingForecast, setIsLoadingForecast] = useState(true);
@@ -55,14 +56,20 @@ function App() {
   }, []);
 
   useEffect(function () {
-    navigator.geolocation.getCurrentPosition(function (pos) {
-      const { latitude: lat, longitude: lng } = pos.coords;
-      fetchCity(lat, lng, setIsLoadingData, setCurLocationData, KEY);
-      getForeCast(lat, lng, setIsLoadingForecast, setCurForeCast, KEY);
-    }, function () {
-      alert('Please turn on your geolocation')
-    });
-  }, []);
+    if (!query.length) return;
+    const { lat, lng, name } = locationData;
+    fetchCity(lat, lng, setIsLoadingData, setCurLocationData, KEY, name, locationData);
+    getForeCast(lat, lng, setIsLoadingForecast, setCurForeCast, KEY);
+    setQuery('');
+  }, [locationData]);
+
+  /* useEffect(function () {
+    console.log(locationData);
+  }, [locationData]) */
+  
+  useEffect(function () {
+    console.log(curLocationData);
+  }, [curLocationData])
 
   const PopulateData = () => {
     if (Object.keys(curLocationData).length && curForeCast.length) {
@@ -82,7 +89,11 @@ function App() {
         <SideBar />
         <DataField>
         <UpperBar>
-          <SearchBar query={query} setQuery={setQuery} locationList={locationList} />
+          <SearchBar
+            query={query}
+            setQuery={setQuery}
+            locationList={locationList}
+            setLocationData={setLocationData} />
           <Mode />
           <WidgetsMenu />
         </UpperBar>

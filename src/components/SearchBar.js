@@ -1,6 +1,6 @@
 import Suggestion from "./Suggestion"
 
-function SearchBar({ query, setQuery, locationList }) {
+function SearchBar({ query, setQuery, locationList, setLocationData }) {
 
     return (
         <div className="search">
@@ -12,7 +12,7 @@ function SearchBar({ query, setQuery, locationList }) {
                 onChange={(e) => setQuery(e.target.value)}>
             </input>
             <ul className="search-suggestions">
-                {locationList && locationList.map(data => <Suggestion data={data} />)}
+                {locationList && locationList.map((data, i) => <Suggestion data={data} setLocationData={setLocationData} key={i}/>)}
             </ul>
         </div>
     )

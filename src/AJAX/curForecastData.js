@@ -1,4 +1,4 @@
-export default async function getForeCast(lat, lng, setIsLoadingForecast, setCurForeCast, KEY) {
+export default async function getForeCast(lat, lng, setIsLoadingForecast, setForeCast, KEY) {
         try {
           setIsLoadingForecast(true);
           const res = await fetch(`https://pro.openweathermap.org/data/2.5/forecast/hourly?lat=${lat}&lon=${lng}&appid=${KEY}&cnt=19&units=metric`);
@@ -20,7 +20,7 @@ export default async function getForeCast(lat, lng, setIsLoadingForecast, setCur
             }
           });
           
-          setCurForeCast(mod);
+          setForeCast(mod);
           setIsLoadingForecast(false);
         }
         catch (err) {
