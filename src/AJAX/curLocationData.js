@@ -1,5 +1,6 @@
 export default async function fetchCity(lat, lng, setIsLoadingData, setLocationData, KEY, customName='', locationData='') {
-        try {
+      try {
+        console.log(lat, lng);
           setIsLoadingData(true);
           const res = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lng}&appid=${KEY}&units=metric`);
           const data = await res.json();

@@ -13,3 +13,21 @@
     grid-row: span 2;
     align-self: center;
 }
+
+.entry {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    /* grid-template-rows: 1fr 1fr; */
+    padding: 5px;
+    margin-bottom: 15px;
+}
+
+.history {
+    margin-top: 40px;
+    background-color: azure;
+}
+
+.entry:hover {
+    background-color: bisque;
+    cursor: pointer;
+}

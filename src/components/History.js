@@ -1,10 +1,10 @@
 import Entry from "./Entry"
 
-function History() {
+function History({ history, setLocationData }) {
+    console.log(history);
     return (
         <ul className="history">
-            {Array.from({ length: 3 }, (_, i) => i + 1)
-            .map(el => <Entry key={el} />)}
+            {history.length && history.map((el, i) => <Entry key={i} data={el} setLocationData={setLocationData} />)}
         </ul>
     )
 }

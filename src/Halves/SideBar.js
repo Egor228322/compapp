@@ -1,11 +1,8 @@
-import FavHisButton from "../components/FavHisMenu"
-import History from "../components/History"
 
-function SideBar() {
+function SideBar({children}) {
     return (
         <div className="sidebar">
-            <FavHisButton />
-            <History />
+            {children}
         </div>
     )
 }

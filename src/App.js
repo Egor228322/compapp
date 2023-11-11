@@ -3,6 +3,8 @@ import { useEffect, useState } from "react"
 import UpperBar from "./components/UpperBar";
 import DataField from "./Halves/DataField";
 import SideBar from "./Halves/SideBar";
+import FavHisButton from "./components/FavHisMenu";
+import History from './components/History';
 import Data from "./components/Data";
 import Temp from "./components/Temp";
 import ForeCast from "./components/ForeCast";
@@ -16,7 +18,6 @@ import Mode from "./components/Mode";
 import WidgetsMenu from "./components/WidgetsMenu";
 import geoCode from "./AJAX/locationList";
 
-
 const KEY = '94db76b31b0a5fae229f081992ccef80';
 
 function App() {
@@ -25,6 +26,7 @@ function App() {
   const [curLocationData, setCurLocationData] = useState({});
   const [locationList, setLocationList] = useState([]);
   const [locationData, setLocationData] = useState({});
+  const [history, setHistory] = useState([]);
   const [isLoadingList, setIsLoadingList] = useState(false);
   const [isLoadingData, setIsLoadingData] = useState(true);
   const [isLoadingForecast, setIsLoadingForecast] = useState(true);
@@ -57,15 +59,21 @@ function App() {
 
   useEffect(function () {
     if (!query.length) return;
+    console.log(locationData);
+    setHistory([locationData, ...history]);
+    setQuery('');
+  }, [locationData, query, history]);
+
+  useEffect(function () {
+    console.log(locationData);
     const { lat, lng, name } = locationData;
     fetchCity(lat, lng, setIsLoadingData, setCurLocationData, KEY, name, locationData);
     getForeCast(lat, lng, setIsLoadingForecast, setCurForeCast, KEY);
-    setQuery('');
   }, [locationData]);
 
-  /* useEffect(function () {
-    console.log(locationData);
-  }, [locationData]) */
+  useEffect(function () {
+    console.log(history);
+  }, [history])
   
   useEffect(function () {
     console.log(curLocationData);
@@ -85,8 +93,10 @@ function App() {
 
   return (
     <div className="global-layout">
-      {/* {isLoading ? <p>Loading...</p> : <Test locationData={curLocationData} />} */}
-        <SideBar />
+        <SideBar>
+          <FavHisButton />
+          <History history={history} setLocationData={setLocationData}/>
+        </SideBar>
         <DataField>
         <UpperBar>
           <SearchBar

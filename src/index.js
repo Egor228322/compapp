@@ -18,6 +18,7 @@ import './styles/Widget.css'
 import './styles/Widgets.css'
 import './styles/WidgetsList.css'
 import './styles/WidgetsMenu.css'
+import './styles/Entry.css'
 import App from './App';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));

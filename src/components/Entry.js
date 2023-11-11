@@ -1,5 +1,4 @@
-function Entry() {
-
+function Entry({data, setLocationData}) {
     const time = new Date();
     const month = `${time.getMonth()}`.padStart(2, '0');
     const day = `${time.getDate()}`.padStart(2, '0');
@@ -10,11 +9,19 @@ function Entry() {
     const curTime = `${hours}:${minutes}`;
     
     return (
-        <div className="entry">
+        <li className="entry"
+            data-value={`${data.lat}:${data.lng}`}
+            onClick={(e) => {
+                const value = e.currentTarget.dataset.value;
+                const [lat, lng] = value.split(':');
+                const coords = { lat, lng, name: data.name }
+                setLocationData(coords);
+            }}
+        >
             <p className="date">{date}</p>
             <p className="time">{curTime}</p>
-            <p className="location">Wilmington DE, USA</p>
-        </div>
+            <p className="location">{data.name}</p>
+        </li>
     )
 }
 
