@@ -17,6 +17,7 @@ import SearchBar from "./components/SearchBar";
 import Mode from "./components/Mode";
 import WidgetsMenu from "./components/WidgetsMenu";
 import geoCode from "./AJAX/locationList";
+import checkHistory from "./Helpers/checkHistory";
 
 const KEY = '94db76b31b0a5fae229f081992ccef80';
 
@@ -32,7 +33,7 @@ function App() {
   const [isLoadingForecast, setIsLoadingForecast] = useState(true);
   const [curForeCast, setCurForeCast] = useState([]);
 
-  useEffect(function () {
+  useEffect(() => {
     const controller = new AbortController();
 
     if (!query.length) {
@@ -40,44 +41,52 @@ function App() {
     } else {
       geoCode(setLocationList, setIsLoadingList, controller, query, KEY);
     }
-    
-    return function () {
-       controller.abort();
-    }
 
+    return () => {
+      controller.abort();
+    };
   }, [query]);
-  
-  useEffect(function () {
-    navigator.geolocation.getCurrentPosition(function (pos) {
-      const { latitude: lat, longitude: lng } = pos.coords;
-      fetchCity(lat, lng, setIsLoadingData, setCurLocationData, KEY);
-      getForeCast(lat, lng, setIsLoadingForecast, setCurForeCast, KEY);
-    }, function () {
-      alert('Please turn on your geolocation')
-    });
+
+  useEffect(() => {
+    const fetchCurrentLocation = async () => {
+      try {
+        const pos = await new Promise((resolve, reject) => {
+          navigator.geolocation.getCurrentPosition(resolve, reject);
+        });
+
+        const { latitude: lat, longitude: lng } = pos.coords;
+        fetchCity(lat, lng, setIsLoadingData, setCurLocationData, KEY);
+        getForeCast(lat, lng, setIsLoadingForecast, setCurForeCast, KEY);
+      } catch (error) {
+        alert('Please turn on your geolocation');
+      }
+    };
+
+    fetchCurrentLocation();
   }, []);
 
-  useEffect(function () {
-    if (!query.length) return;
-    console.log(locationData);
-    setHistory([locationData, ...history]);
-    setQuery('');
-  }, [locationData, query, history]);
+  useEffect(() => {
+    if (!query.length
+        && !Object.keys(locationData).length) return;
 
-  useEffect(function () {
-    console.log(locationData);
     const { lat, lng, name } = locationData;
     fetchCity(lat, lng, setIsLoadingData, setCurLocationData, KEY, name, locationData);
     getForeCast(lat, lng, setIsLoadingForecast, setCurForeCast, KEY);
+    setQuery('');
   }, [locationData]);
 
   useEffect(function () {
-    console.log(history);
-  }, [history])
-  
-  useEffect(function () {
-    console.log(curLocationData);
-  }, [curLocationData])
+    if (!query.length
+      && !Object.keys(locationData).length) return;
+    const { coord: { lat, lon }, name, id } = curLocationData;
+    console.log(curLocationData)
+    
+    if (!checkHistory(id, history)) return;
+
+    const his = { lat, lon, name, id };
+    setHistory(history => [his, ...history]);
+
+  }, [curLocationData]);
 
   const PopulateData = () => {
     if (Object.keys(curLocationData).length && curForeCast.length) {

@@ -10,7 +10,7 @@ function Entry({data, setLocationData}) {
     
     return (
         <li className="entry"
-            data-value={`${data.lat}:${data.lng}`}
+            data-value={`${data.lat}:${data.lon}`}
             onClick={(e) => {
                 const value = e.currentTarget.dataset.value;
                 const [lat, lng] = value.split(':');
