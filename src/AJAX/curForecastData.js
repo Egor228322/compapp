@@ -12,9 +12,11 @@ export default async function getForeCast(lat, lng, setIsLoadingForecast, setFor
             const hours = `${date.getHours()}`.padStart(2, '0');
             const min = `${date.getMinutes()}`.padStart(2, '0');
             const time = `${hours}:${min}`;
+
             return {
               time: time,
-              temp: Math.round(temp),
+              C: Math.round(temp),
+              F: Math.round((temp * 9 / 5) + 32),
               icon,
               description
             }

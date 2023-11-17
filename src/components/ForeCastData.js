@@ -1,5 +1,5 @@
 
-function ForeCastData({ forecast }) {
+function ForeCastData({ forecast, mode }) {
     
     return (
         <div className="foreCast-data">
@@ -11,7 +11,7 @@ function ForeCastData({ forecast }) {
                     className='icon-forecast'>
                 </img>
             </figure>
-            <p className="weather-data">{forecast.temp}°</p>
+            <p className="weather-data">{mode === 'celsius' ? forecast.F : forecast.C}°</p>
         </div>
     )
 }

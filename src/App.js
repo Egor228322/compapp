@@ -19,6 +19,7 @@ import WidgetsMenu from "./components/WidgetsMenu";
 import geoCode from "./AJAX/locationList";
 import checkID from "./Helpers/checkID";
 import Favorites from "./components/Favorites";
+import updateHistory from "./Helpers/updateHistory";
 
 const KEY = '94db76b31b0a5fae229f081992ccef80';
 
@@ -28,9 +29,10 @@ function App() {
   const [curLocationData, setCurLocationData] = useState({});
   const [locationList, setLocationList] = useState([]);
   const [locationData, setLocationData] = useState({});
-  const [history, setHistory] = useState([]);
-  const [favorites, setFavorites] = useState([]);
-  const [open, setOpen] = useState('history');
+  const [history, setHistory] = useState(localStorage.getItem('history') || []);
+  const [favorites, setFavorites] = useState(localStorage.getItem('favorites') || []);
+  const [mode, setMode] = useState('celsius');
+  const [open, setOpen] = useState('favorites');
   const [isLoadingList, setIsLoadingList] = useState(false);
   const [isLoadingData, setIsLoadingData] = useState(true);
   const [isLoadingForecast, setIsLoadingForecast] = useState(true);
@@ -71,7 +73,7 @@ function App() {
   function handleFav(data) {
     console.log(favorites.length);
     setFavorites((favorites) => {
-      if (!checkID(data.id, favorites)) {
+      if (typeof checkID(data.id, favorites) === "number") {
         return favorites;
       } else if (favorites.length === 3) {
         return;
@@ -81,13 +83,8 @@ function App() {
     })
   }
 
-  useEffect(function () {
-    console.log(favorites)
-  }, [favorites])
-
   useEffect(() => {
-    if (!query.length
-        && !Object.keys(locationData).length) return;
+    if (!Object.keys(locationData).length) return;
 
     const { lat, lng, name } = locationData;
     fetchCity(lat, lng, setIsLoadingData, setCurLocationData, KEY, name, locationData);
@@ -100,25 +97,32 @@ function App() {
       && !Object.keys(locationData).length) return;
     const { coord: { lat, lon }, name, id } = curLocationData;
     console.log(curLocationData)
-    
-    if (history.length === 10) {
-      if (!checkID(id, history)) return;
-      else {
-        
-      }
-    }
-    
 
     const his = { lat, lon, name, id };
-    setHistory(history => [his, ...history]);
+    const index = checkID(id, history);
+    if (history.length === 10) {
+      if (typeof index !== 'number') {
+        updateHistory(his, setHistory, history);
+      }
+      else {
+        return;
+      }
+    } else {
+      if (typeof index !== 'number') {
+        setHistory(history => [his, ...history]);
+      }
+      else {
+        return;
+      }
+    }
 
   }, [curLocationData]);
 
   const PopulateData = () => {
     if (Object.keys(curLocationData).length && curForeCast.length) {
       return <>
-        <Temp locationData={curLocationData} handleFav={handleFav} />
-        <ForeCast forecast={curForeCast} />
+        <Temp locationData={curLocationData} handleFav={handleFav} mode={mode} />
+        <ForeCast forecast={curForeCast} mode={mode} />
         <Widgets />
       </>
     } else {

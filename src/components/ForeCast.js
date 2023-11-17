@@ -1,10 +1,10 @@
 import ForeCastDataList from "./ForeCastDataList"
 
-function ForeCast({ forecast }) {
+function ForeCast({ forecast, mode }) {
 
     return (
         <div>
-            <ForeCastDataList forecast={forecast} />
+            <ForeCastDataList forecast={forecast} mode={mode} />
         </div>
     )
 }

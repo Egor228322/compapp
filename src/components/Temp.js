@@ -9,16 +9,6 @@ function Temp({ locationData, handleFav }) {
 
     let date = new Date(dt + timezone);
     date = date.toUTCString().slice(5, -7);
-    
-    /* const hours = `${date.getHours()}`.padStart(2, "0");
-    const minutes = `${date.getMinutes()}`.padStart(2, "0");
-    const time = `${hours}:${minutes}`;
-    const date =  */
-
-    
-    function handleChangeMetric() {
-      mode === 'c' ? setMode('f') : setMode('c');
-    }
 
     return (
         <div className="temp">
