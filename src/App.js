@@ -20,6 +20,7 @@ import geoCode from "./AJAX/locationList";
 import checkID from "./Helpers/checkID";
 import Favorites from "./components/Favorites";
 import updateHistory from "./Helpers/updateHistory";
+import updateFavorites from "./Helpers/updateFavorites";
 
 const KEY = '94db76b31b0a5fae229f081992ccef80';
 
@@ -29,8 +30,12 @@ function App() {
   const [curLocationData, setCurLocationData] = useState({});
   const [locationList, setLocationList] = useState([]);
   const [locationData, setLocationData] = useState({});
-  const [history, setHistory] = useState(localStorage.getItem('history') || []);
-  const [favorites, setFavorites] = useState(localStorage.getItem('favorites') || []);
+  const [history, setHistory] = useState(() => {
+    return JSON.parse(localStorage.getItem('history')) || []
+  });
+  const [favorites, setFavorites] = useState(() => {
+    return JSON.parse(localStorage.getItem('favorites')) || []
+  });
   const [mode, setMode] = useState('celsius');
   const [open, setOpen] = useState('favorites');
   const [isLoadingList, setIsLoadingList] = useState(false);
@@ -68,20 +73,31 @@ function App() {
     };
 
     fetchCurrentLocation();
+
+    return () => {
+      localStorage.setItem('history', JSON.stringify(history));
+      localStorage.setItem('favorites', favorites);
+    }
+    
   }, []);
 
   function handleFav(data) {
-    console.log(favorites.length);
-    setFavorites((favorites) => {
-      if (typeof checkID(data.id, favorites) === "number") {
-        return favorites;
-      } else if (favorites.length === 3) {
-        return;
-      } else {
-        return [data, ...favorites]
-      }
-    })
+    const id = checkID(data.id, favorites);
+    console.log(id);
+    if (typeof id === "number") {
+        updateFavorites(id, setFavorites, favorites);
+    }
+    else if (favorites.length === 10) {
+      return;
+    } else {
+      return setFavorites(() => [data, ...favorites])
+    }
+
   }
+
+  useEffect(function () {
+    console.log(favorites);
+  }, [favorites]);
 
   useEffect(() => {
     if (!Object.keys(locationData).length) return;
