@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react"
+import { useEffect, useRef, useState } from "react"
 
 import UpperBar from "./components/UpperBar";
 import DataField from "./Halves/DataField";
@@ -17,7 +17,8 @@ import SearchBar from "./components/SearchBar";
 import Mode from "./components/Mode";
 import WidgetsMenu from "./components/WidgetsMenu";
 import geoCode from "./AJAX/locationList";
-import checkHistory from "./Helpers/checkHistory";
+import checkID from "./Helpers/checkID";
+import Favorites from "./components/Favorites";
 
 const KEY = '94db76b31b0a5fae229f081992ccef80';
 
@@ -28,6 +29,8 @@ function App() {
   const [locationList, setLocationList] = useState([]);
   const [locationData, setLocationData] = useState({});
   const [history, setHistory] = useState([]);
+  const [favorites, setFavorites] = useState([]);
+  const [open, setOpen] = useState('history');
   const [isLoadingList, setIsLoadingList] = useState(false);
   const [isLoadingData, setIsLoadingData] = useState(true);
   const [isLoadingForecast, setIsLoadingForecast] = useState(true);
@@ -65,6 +68,23 @@ function App() {
     fetchCurrentLocation();
   }, []);
 
+  function handleFav(data) {
+    console.log(favorites.length);
+    setFavorites((favorites) => {
+      if (!checkID(data.id, favorites)) {
+        return favorites;
+      } else if (favorites.length === 3) {
+        return;
+      } else {
+        return [data, ...favorites]
+      }
+    })
+  }
+
+  useEffect(function () {
+    console.log(favorites)
+  }, [favorites])
+
   useEffect(() => {
     if (!query.length
         && !Object.keys(locationData).length) return;
@@ -81,7 +101,13 @@ function App() {
     const { coord: { lat, lon }, name, id } = curLocationData;
     console.log(curLocationData)
     
-    if (!checkHistory(id, history)) return;
+    if (history.length === 10) {
+      if (!checkID(id, history)) return;
+      else {
+        
+      }
+    }
+    
 
     const his = { lat, lon, name, id };
     setHistory(history => [his, ...history]);
@@ -91,7 +117,7 @@ function App() {
   const PopulateData = () => {
     if (Object.keys(curLocationData).length && curForeCast.length) {
       return <>
-        <Temp locationData={curLocationData} />
+        <Temp locationData={curLocationData} handleFav={handleFav} />
         <ForeCast forecast={curForeCast} />
         <Widgets />
       </>
@@ -103,8 +129,11 @@ function App() {
   return (
     <div className="global-layout">
         <SideBar>
-          <FavHisButton />
-          <History history={history} setLocationData={setLocationData}/>
+        <FavHisButton open={open} setOpen={setOpen} />
+        {open === 'history' ?
+          (<History history={history} setLocationData={setLocationData} />) : 
+          (<Favorites favorites={favorites} setLocationData={setLocationData} />)
+        }
         </SideBar>
         <DataField>
         <UpperBar>

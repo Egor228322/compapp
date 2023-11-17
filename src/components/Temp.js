@@ -1,10 +1,10 @@
 import { useState } from "react";
 
-function Temp({ locationData }) {
+function Temp({ locationData, handleFav }) {
 
   const [mode, setMode] = useState('c');
 
-  const { C, F, weather, dt, timezone, name } = locationData;
+  const { C, F, weather, dt, timezone, name, id, coord:{lat, lon} } = locationData;
   const condition = weather[0].main;
 
     let date = new Date(dt + timezone);
@@ -39,8 +39,9 @@ function Temp({ locationData }) {
             </h1>
             </div>
             <div className="info-temp">
+                <button className="fav-location" onClick={() => handleFav({name, id, lat, lon})}>Favorite</button>
                 <p>{condition}</p>
-            <p>{mode === 'c' ? `${C.tempMax} / ${C.tempMin}°` : `${F.tempMax} / ${F.tempMin}°`}</p>
+                <p>{mode === 'c' ? `${C.tempMax} / ${C.tempMin}°` : `${F.tempMax} / ${F.tempMin}°`}</p>
                 <p>Feels like: {mode === 'c' ? `${C.feelsLike}°` : `${F.feelsLike}°`}</p>
             </div>
             </div>
