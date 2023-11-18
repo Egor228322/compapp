@@ -36,7 +36,7 @@ function App() {
   const [favorites, setFavorites] = useState(() => {
     return JSON.parse(localStorage.getItem('favorites')) || []
   });
-  const [mode, setMode] = useState('celsius');
+  const [mode, setMode] = useState('c');
   const [open, setOpen] = useState('favorites');
   const [isLoadingList, setIsLoadingList] = useState(false);
   const [isLoadingData, setIsLoadingData] = useState(true);
@@ -76,9 +76,9 @@ function App() {
 
     return () => {
       localStorage.setItem('history', JSON.stringify(history));
-      localStorage.setItem('favorites', favorites);
+      localStorage.setItem('favorites', JSON.stringify(favorites));
     }
-    
+
   }, []);
 
   function handleFav(data) {
@@ -109,8 +109,7 @@ function App() {
   }, [locationData]);
 
   useEffect(function () {
-    if (!query.length
-      && !Object.keys(locationData).length) return;
+    if (!Object.keys(locationData).length) return;
     const { coord: { lat, lon }, name, id } = curLocationData;
     console.log(curLocationData)
 

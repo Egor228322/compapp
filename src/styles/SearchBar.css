@@ -11,6 +11,11 @@
     overflow-y: auto;
     z-index: 1;
     left: 38.75%;
+    opacity: 0;
+}
+
+.input:focus ~ .search-suggestions {
+    opacity: 100;
 }
 
 .search-item {
@@ -31,3 +36,4 @@
     height: 24px;
     width: 24px;
 }
+
