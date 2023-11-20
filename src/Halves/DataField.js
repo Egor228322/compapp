@@ -1,5 +1,3 @@
-import Data from "../components/Data"
-import UpperBar from "../components/UpperBar"
 
 function DataField({ children }) {
     return (

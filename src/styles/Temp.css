@@ -1,7 +1,6 @@
 .temp {
     display: flex;
     justify-content: space-between;
-    align-items: flex-end;
     padding: 1rem 2rem;
     text-align: center;
     background-color: rgb(100, 100, 146);

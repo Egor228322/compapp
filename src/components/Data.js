@@ -1,4 +1,3 @@
-import DataMain from "./DataMain"
 
 function Data({ children }) {
     return (

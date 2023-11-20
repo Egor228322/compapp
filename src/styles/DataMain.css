@@ -1,10 +1,16 @@
+.data-container {
+    background-image: linear-gradient(to bottom, var(--light-secondary), white);
+}
+
 .data-main {
-    width: 500px;
-    height: 500px;
-    background-color: white;
+    width: 50rem;
+    height: 50rem;
     border: 1px solid black;
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
 }
