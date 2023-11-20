@@ -1,12 +1,14 @@
 .sidebar {
-    background: beige;
+    background: var(--main-color);
 }
 
 .selection-his-fav {
     text-align: center;
-    padding: 10px;
+    padding: 1rem;
+    font-weight: 600;
+    font-size: 3rem;
 }
 
 .btn-selection {
-    margin-top: 20px;
+    margin-top: 2rem;
 }

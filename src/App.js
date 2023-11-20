@@ -38,6 +38,7 @@ function App() {
   });
   const [mode, setMode] = useState('c');
   const [open, setOpen] = useState('favorites');
+  const [theme, setTheme] = useState('light');
   const [isLoadingList, setIsLoadingList] = useState(false);
   const [isLoadingData, setIsLoadingData] = useState(true);
   const [isLoadingForecast, setIsLoadingForecast] = useState(true);

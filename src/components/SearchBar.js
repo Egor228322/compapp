@@ -4,7 +4,7 @@ function SearchBar({ query, setQuery, locationList, setLocationData }) {
 
     return (
         <div className="search">
-            <label>search by city: </label>
+            <label>Search by city: </label>
             <input
                 type="text"
                 placeholder="City name"

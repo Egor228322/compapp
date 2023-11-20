@@ -1,16 +1,35 @@
 .search {
     position: relative;
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+.input {
+    background-color: rgba(256, 256, 256, 0.5);
+    border-radius: 0.5rem 0.5rem 0 0;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-bottom: 3px solid transparent;
+    font: inherit;
+    transition: all 0.3s;
+}
+
+.input:focus,
+.input:focus-within {
+    outline: none;
+    border: none;
+    border-bottom: 3px solid var(--light-primary);
 }
 
 .search-suggestions {
     position: absolute;
     list-style: none;
-    background-color: white;
+    background-color: bisque;
     border: 1px solid #ccc;
-    max-height: 200px;
-    overflow-y: auto;
+    width: 30rem;
+    overflow: hidden;
     z-index: 1;
-    left: 38.75%;
+    left: 37%;
     opacity: 0;
 }
 
@@ -20,15 +39,17 @@
 
 .search-item {
     display: flex;
+    background-color: white;
     align-items: center;
     padding: 4px;
-    justify-content: space-between;
-    gap: 30px;
+    gap: 1.6rem;
     white-space: nowrap;
+    transition: all 0.2s;
 }
 
 .search-item:hover {
     background-color: bisque;
+    transform: translateX(5px);
     cursor: pointer;
 }
 
