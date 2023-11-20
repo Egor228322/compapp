@@ -23,16 +23,16 @@ function Temp({ locationData, handleFav }) {
                     {name}
                     </h2>
                 </div>
-                <p>{date}</p>
-            <h1>
+                <p className="temp-date">{date}</p>
+                <h1 className="temp-current">
                 {`${mode === 'c' ? C.temp : F.temp}°`} 
             </h1>
             </div>
             <div className="info-temp">
                 <button className="fav-location" onClick={() => handleFav({name, id, lat, lon})}>Favorite</button>
-                <p>{condition}</p>
-                <p>{mode === 'c' ? `${C.tempMax} / ${C.tempMin}°` : `${F.tempMax} / ${F.tempMin}°`}</p>
-                <p>Feels like: {mode === 'c' ? `${C.feelsLike}°` : `${F.feelsLike}°`}</p>
+                <p className="temp-condition">{condition}</p>
+                <p className="temp-max-min">{mode === 'c' ? `${C.tempMax} / ${C.tempMin}°` : `${F.tempMax} / ${F.tempMin}°`}</p>
+                <p className="temp-feels-like">Feels like: {mode === 'c' ? `${C.feelsLike}°` : `${F.feelsLike}°`}</p>
             </div>
             </div>
     )

@@ -1,3 +1,5 @@
 .widgets {
-    margin-top: 75px;
+    grid-row: 2;
+    grid-column: 1;
+    background-color: aqua;
 }

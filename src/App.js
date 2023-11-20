@@ -21,6 +21,7 @@ import checkID from "./Helpers/checkID";
 import Favorites from "./components/Favorites";
 import updateHistory from "./Helpers/updateHistory";
 import updateFavorites from "./Helpers/updateFavorites";
+import ForeCastDaily from "./components/ForeCastDaily";
 
 const KEY = '94db76b31b0a5fae229f081992ccef80';
 
@@ -138,8 +139,10 @@ function App() {
     if (Object.keys(curLocationData).length && curForeCast.length) {
       return <>
         <Temp locationData={curLocationData} handleFav={handleFav} mode={mode} />
-        <ForeCast forecast={curForeCast} mode={mode} />
         <Widgets />
+        <ForeCastDaily />
+        <ForeCast forecast={curForeCast} mode={mode} />
+        
       </>
     } else {
       return <p>Loading...</p>

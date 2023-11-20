@@ -1,10 +1,12 @@
-import ForeCastDataList from "./ForeCastDataList"
+import ForeCastData from "./ForeCastData"
 
 function ForeCast({ forecast, mode }) {
 
     return (
-        <div>
-            <ForeCastDataList forecast={forecast} mode={mode} />
+        <div className="list-container">
+            <ul className="foreCast-list">
+                {forecast.map((el, i) => <ForeCastData key={i} forecast={forecast[i]} mode={mode} />)}
+            </ul>
         </div>
     )
 }

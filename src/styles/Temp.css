@@ -1,26 +1,52 @@
 .temp {
     display: flex;
     justify-content: space-between;
-    padding: 1rem 2rem;
+    padding: 3rem;
     text-align: center;
-    background-color: rgb(100, 100, 146);
+    background-color: rgb(244, 215, 215);
+    border-radius: 1rem;
+    grid-row: 1;
+    grid-column: 1;
 }
 
 .main-data-temp {
     text-align: start;
+    line-height: 1.1;
 }
-
 .location-temp {
     display: flex;
-    align-items: flex-end;
+    align-items: center;
+    font-size: 2.2rem;
     gap: 5px;
 }
 
 .location-icon {
-    height: 24px;
-    width: 24px;
+    height: 2.4rem;
+    width: 2.4rem;
+}
+
+.temp-date {
+    font-size: 2rem;
+}
+
+.temp-current {
+    font-size: 4rem;
 }
 
 .info-temp {
     text-align: end;
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+.condition {
+
+}
+
+.temp-max-min {
+
+}
+
+.temp-feels-like {
+
 }
