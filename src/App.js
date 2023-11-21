@@ -22,6 +22,7 @@ import Favorites from "./components/Favorites";
 import updateHistory from "./Helpers/updateHistory";
 import updateFavorites from "./Helpers/updateFavorites";
 import ForeCastDaily from "./components/ForeCastDaily";
+import getForeCastDaily from "./AJAX/curForeCastDaily";
 
 const KEY = '94db76b31b0a5fae229f081992ccef80';
 
@@ -29,6 +30,8 @@ function App() {
 
   const [query, setQuery] = useState('');
   const [curLocationData, setCurLocationData] = useState({});
+  const [curForeCast, setCurForeCast] = useState([]);
+  const [curForeCastDaily, setCurForeCastDaily] = useState([]);
   const [locationList, setLocationList] = useState([]);
   const [locationData, setLocationData] = useState({});
   const [history, setHistory] = useState(() => {
@@ -37,13 +40,13 @@ function App() {
   const [favorites, setFavorites] = useState(() => {
     return JSON.parse(localStorage.getItem('favorites')) || []
   });
-  const [mode, setMode] = useState('c');
   const [open, setOpen] = useState('favorites');
+  const [mode, setMode] = useState('c');
   const [theme, setTheme] = useState('light');
   const [isLoadingList, setIsLoadingList] = useState(false);
-  const [isLoadingData, setIsLoadingData] = useState(true);
-  const [isLoadingForecast, setIsLoadingForecast] = useState(true);
-  const [curForeCast, setCurForeCast] = useState([]);
+  const [isLoadingData, setIsLoadingData] = useState(false);
+  const [isLoadingForecast, setIsLoadingForecast] = useState(false);
+  const [isLoadingForecastDaily, setIsLoadingForecastDaily] = useState(false);
 
   useEffect(() => {
     const controller = new AbortController();
@@ -68,6 +71,7 @@ function App() {
 
         const { latitude: lat, longitude: lng } = pos.coords;
         fetchCity(lat, lng, setIsLoadingData, setCurLocationData, KEY);
+        getForeCastDaily(lat, lng, setCurForeCastDaily, setIsLoadingForecastDaily, KEY);
         getForeCast(lat, lng, setIsLoadingForecast, setCurForeCast, KEY);
       } catch (error) {
         alert('Please turn on your geolocation');
@@ -113,7 +117,6 @@ function App() {
   useEffect(function () {
     if (!Object.keys(locationData).length) return;
     const { coord: { lat, lon }, name, id } = curLocationData;
-    console.log(curLocationData)
 
     const his = { lat, lon, name, id };
     const index = checkID(id, history);
@@ -151,13 +154,13 @@ function App() {
 
   return (
     <div className="global-layout">
-        <SideBar>
+      <SideBar>
         <FavHisButton open={open} setOpen={setOpen} />
         {open === 'history' ?
           (<History history={history} setLocationData={setLocationData} />) : 
           (<Favorites favorites={favorites} setLocationData={setLocationData} />)
         }
-        </SideBar>
+        </SideBar> 
         <DataField>
         <UpperBar>
           <SearchBar

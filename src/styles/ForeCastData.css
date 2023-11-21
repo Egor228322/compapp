@@ -5,11 +5,20 @@
     align-items: center;
     padding: 30px 20px;
     background-color: bisque;
+    gap: 0.5rem;
+}
+
+.forecast-time {
+    font-size: 1.6rem;
+}
+
+.forecast-temp {
+    font-size: 1.8rem;
 }
 
 .icon-forecast {
-    height: 36px;
-    width: 36px;
+    height: 2.4rem;
+    width: 2.4rem;
 }
 
 .foreCast-daily {

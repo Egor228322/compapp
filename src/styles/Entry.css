@@ -15,7 +15,7 @@
     background-color: var(--light-primary);
     color: white;
     cursor: pointer;
-    transform: translateY(-5px);
+    transform: translateY(-2px);
     box-shadow: 0 5px 20px rgba(0,0,0, 0.2);
 }
 

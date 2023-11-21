@@ -1,8 +1,9 @@
 
 function SideBar({children}) {
+
     return (
         <div className="sidebar">
-            {children}
+          {children}
         </div>
     )
 }

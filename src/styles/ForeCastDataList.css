@@ -7,10 +7,9 @@
 .foreCast-list {
     display: flex;
     margin: 0;
-    padding: 20px;
-    background-color: black;
     white-space: nowrap;
     overflow-x: scroll;
+    border-radius: 1rem;
 }
 
 /* .foreCast-list:hover {

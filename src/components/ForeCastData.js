@@ -3,7 +3,7 @@ function ForeCastData({ forecast, mode }) {
     
     return (
         <div className="foreCast-data">
-            <p className="weather-data">{forecast.time}</p>
+            <p className="forecast-time">{forecast.time}</p>
             <figure>
                 <img
                     src={require(`../icons/${forecast.icon}.png`)}
@@ -11,7 +11,7 @@ function ForeCastData({ forecast, mode }) {
                     className='icon-forecast'>
                 </img>
             </figure>
-            <p className="weather-data">{mode === 'celsius' ? forecast.F : forecast.C}°</p>
+            <p className="forecast-temp">{mode === 'celsius' ? forecast.F : forecast.C}°</p>
         </div>
     )
 }
