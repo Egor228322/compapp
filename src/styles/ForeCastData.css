@@ -16,12 +16,31 @@
     font-size: 1.8rem;
 }
 
-.icon-forecast {
-    height: 2.4rem;
+.icon-forecast,
+.daily-icon-forecast {
     width: 2.4rem;
+    height: 2.4rem;
 }
 
 .foreCast-daily {
     grid-row: span 2;
     grid-column: 2;
 }
+
+.daily-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 1.6rem;
+}
+
+.day,
+.daily-min-max {
+    font-weight: bold;
+}
+
+.daily-figure {
+    display: flex;
+    align-items: center;
+}
+

@@ -12,10 +12,10 @@
     border-radius: 1rem;
 }
 
-/* .foreCast-list:hover {
-
-} */
-
 .foreCast-list::-webkit-scrollbar {
     display: none;
+}
+
+.forecast-daily-list {
+    list-style: none;
 }

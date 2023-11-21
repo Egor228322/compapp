@@ -12,7 +12,7 @@ function SearchBar({ query, setQuery, locationList, setLocationData }) {
                 onChange={(e) => setQuery(e.target.value)}
                 className="input">
             </input>
-            <ul className="search-suggestions">
+            <ul className="search-suggestions" style={{height : query.length ? `100%` : `0`}}>
                 {locationList && locationList.map((data, i) => <Suggestion data={data} setLocationData={setLocationData} key={i}/>)}
             </ul>
         </div>

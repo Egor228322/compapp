@@ -112,6 +112,10 @@ function App() {
   }, [locationData]);
 
   useEffect(function () {
+    console.log(curForeCastDaily)
+  }, [curForeCastDaily])
+
+  useEffect(function () {
     if (!Object.keys(locationData).length) return;
     const { coord: { lat, lon }, name, id } = curLocationData;
 
