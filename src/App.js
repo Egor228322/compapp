@@ -101,15 +101,12 @@ function App() {
 
   }
 
-  useEffect(function () {
-    console.log(favorites);
-  }, [favorites]);
-
   useEffect(() => {
     if (!Object.keys(locationData).length) return;
 
     const { lat, lng, name } = locationData;
     fetchCity(lat, lng, setIsLoadingData, setCurLocationData, KEY, name, locationData);
+    getForeCastDaily(lat, lng, setCurForeCastDaily, setIsLoadingForecastDaily, KEY);
     getForeCast(lat, lng, setIsLoadingForecast, setCurForeCast, KEY);
     setQuery('');
   }, [locationData]);
@@ -143,7 +140,7 @@ function App() {
       return <>
         <Temp locationData={curLocationData} handleFav={handleFav} mode={mode} />
         <Widgets />
-        <ForeCastDaily />
+        <ForeCastDaily forecast={curForeCastDaily} mode={mode} />
         <ForeCast forecast={curForeCast} mode={mode} />
         
       </>
