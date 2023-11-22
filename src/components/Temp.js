@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-function Temp({ locationData, handleFav }) {
+function Temp({ locationData }) {
 
   const [mode, setMode] = useState('c');
 
@@ -29,7 +29,6 @@ function Temp({ locationData, handleFav }) {
             </h1>
             </div>
             <div className="info-temp">
-                <button className="fav-location" onClick={() => handleFav({name, id, lat, lon})}>Favorite</button>
                 <p className="temp-condition">{condition}</p>
                 <p className="temp-max-min">{mode === 'c' ? `${C.tempMax} / ${C.tempMin}°` : `${F.tempMax} / ${F.tempMin}°`}</p>
                 <p className="temp-feels-like">Feels like: {mode === 'c' ? `${C.feelsLike}°` : `${F.feelsLike}°`}</p>
