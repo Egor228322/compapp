@@ -1,5 +1,4 @@
 .search {
-    position: relative;
     font-size: 2rem;
     font-weight: bold;
 }
@@ -12,6 +11,7 @@
     border-bottom: 3px solid transparent;
     font: inherit;
     transition: all 0.3s;
+    width: 60rem;
 }
 
 .input:focus,
@@ -21,16 +21,22 @@
     border-bottom: 3px solid var(--light-primary);
 }
 
+.input-container {
+    position: relative;
+    display: inline-block;
+}
+
 .search-suggestions {
     position: absolute;
     list-style: none;
     background-color: bisque;
     border: 1px solid #ccc;
-    width: 30rem;
+    width: 100%;
     overflow: hidden;
-    z-index: 1;
-    left: 37%;
+    left: 0;
     opacity: 0;
+    z-index: 100;
+    border-radius: 0 0 0.5rem 0.5rem;
 }
 
 .input:focus ~ .search-suggestions {

@@ -1,0 +1,20 @@
+.data-container {
+    position: relative;
+}
+
+.powered-by {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    font-size: 2rem;
+    filter: grayscale(100%);
+    opacity: 0.7;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+}
+
+.powered-by-img {
+    width: 10rem;
+    height: auto;
+}

@@ -5,16 +5,18 @@ function SearchBar({ query, setQuery, locationList, setLocationData }) {
     return (
         <div className="search">
             <label>Search by city: </label>
-            <input
-                type="text"
-                placeholder="City name"
-                value={query}
-                onChange={(e) => setQuery(e.target.value)}
-                className="input">
-            </input>
-            <ul className="search-suggestions" style={{height : query.length ? `100%` : `0`}}>
-                {locationList && locationList.map((data, i) => <Suggestion data={data} setLocationData={setLocationData} key={i}/>)}
-            </ul>
+            <div className="input-container">
+                <input
+                    type="text"
+                    placeholder="City name"
+                    value={query}
+                    onChange={(e) => setQuery(e.target.value)}
+                    className="input">
+                </input>
+                <ul className="search-suggestions">
+                    {locationList && locationList.map((data, i) => <Suggestion data={data} setLocationData={setLocationData} key={i}/>)}
+                </ul>
+            </div>
         </div>
     )
 }

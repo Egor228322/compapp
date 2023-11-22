@@ -17,5 +17,13 @@
 }
 
 .forecast-daily-list {
+    grid-row: span 2;
     list-style: none;
+    background-color: rgb(244, 215, 215);
+    border-radius: 1.5rem;
+    padding: 2.2rem 1.2rem 2.2rem 1.2rem;
+}
+
+.forecast-daily-list .daily-container:not(:last-child) {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
 }
