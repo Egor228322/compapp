@@ -2,7 +2,6 @@ function ForeCastDataDaily({forecast, mode}) {
     return (
         <li className="daily-container">
             <p className="day">{forecast.day}</p>
-            
             <figure className="daily-figure">
                 <p>{forecast.main}</p>
                 <img
@@ -10,10 +9,11 @@ function ForeCastDataDaily({forecast, mode}) {
                     alt={forecast.description}
                     className='daily-icon-forecast'>
                 </img>
-                </figure>
+            </figure>
             <p className="daily-min-max">{mode === 'c' ?
                 `${forecast.C.max}°/${forecast.C.min}°` : 
-                `${forecast.F.max}°/${forecast.F.min}°`}</p>
+                `${forecast.F.max}°/${forecast.F.min}°`}
+            </p>
         </li>
     )
 }
