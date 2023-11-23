@@ -1,11 +1,10 @@
+import Button from "./Button"
+
 function FavHisButton({open, setOpen}) {
     return (
         <div className="selection-his-fav">
-            <h1>Please Select Type</h1>
-            <div>
-                <button className="btn-selection" disabled={open === 'favorites'} onClick={() => setOpen('favorites')}>Favorites</button>
-                <button className="btn-selection" disabled={open === 'history'} onClick={() => setOpen('history')}>History</button>
-            </div>
+            <h1 className="title-side-bar">Please Select Type</h1>
+            <Button open={open} setOpen={setOpen} />
         </div>
     )
 }

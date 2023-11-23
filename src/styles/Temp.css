@@ -8,6 +8,7 @@
     border-radius: 1rem;
     grid-row: 1;
     grid-column: 1;
+    position: relative;
 }
 
 .main-data-temp {
@@ -16,17 +17,17 @@
 .location-temp {
     display: flex;
     align-items: center;
-    font-size: 3.2rem;
+    font-size: 4.2rem;
     gap: 5px;
 }
 
 .location-icon {
-    height: 3.2rem;
-    width: 3.2rem;
+    height: 4.2rem;
+    width: 4.2rem;
 }
 
 .temp-date {
-    font-size: 2.4rem;
+    font-size: 3rem;
 }
 
 .temp-current {
@@ -35,7 +36,7 @@
 
 .info-temp {
     text-align: end;
-    font-size: 2.4rem;
+    font-size: 3.2rem;
     font-weight: bold;
 }
 

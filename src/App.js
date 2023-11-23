@@ -40,7 +40,7 @@ function App() {
   const [favorites, setFavorites] = useState(() => {
     return JSON.parse(localStorage.getItem('favorites')) || []
   });
-  const [open, setOpen] = useState('favorites');
+  const [open, setOpen] = useState('fav');
   const [mode, setMode] = useState('c');
   const [theme, setTheme] = useState('light');
   const [isLoadingList, setIsLoadingList] = useState(false);
@@ -157,7 +157,7 @@ function App() {
     <div className="global-layout">
       <SideBar>
         <FavHisButton open={open} setOpen={setOpen} />
-        {open === 'history' ?
+        {open === 'his' ?
           (<History history={history} setLocationData={setLocationData} />) : 
           (<Favorites favorites={favorites} setLocationData={setLocationData} />)
         }

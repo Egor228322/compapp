@@ -1,8 +1,6 @@
 import { useState } from "react";
 
-function Temp({ locationData }) {
-
-  const [mode, setMode] = useState('c');
+function Temp({ locationData, handleFav, mode }) {
 
   const { C, F, weather, dt, timezone, name, id, coord:{lat, lon} } = locationData;
   const condition = weather[0].main;
@@ -27,6 +25,11 @@ function Temp({ locationData }) {
                 <h1 className="temp-current">
                 {`${mode === 'c' ? C.temp : F.temp}°`} 
             </h1>
+            </div>
+            <div className="fav-btn-container" onClick={() => handleFav(locationData)}>
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="fav-icon">
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+                    </svg>
             </div>
             <div className="info-temp">
                 <p className="temp-condition">{condition}</p>

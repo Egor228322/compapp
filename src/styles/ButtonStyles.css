@@ -1,0 +1,88 @@
+.btn-container {
+    display: flex;
+    position: relative;
+    cursor: pointer;
+    width: 40%;
+    margin: 0 auto;
+    border-radius: 2rem;
+    overflow: hidden;
+}
+
+.slider {
+    position: absolute;
+    background-color: black;
+    width: 50%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    transition: all 0.2s ease;
+}
+
+.btn {
+    font-size: 2rem;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    background-color: transparent;
+}
+
+.text {
+    position: relative;
+    z-index: 2;
+    color: black;
+}
+
+.btn-left {
+    background-color: aqua;
+    height: 100%;
+}
+
+.btn-right {
+    background-color: red;
+    height: 100%;
+}
+
+.btn-container.fav .slider {
+    transform: translateX(0%);
+    border-radius: 2rem 0 0 2rem;
+}
+
+.btn-container.his .slider {
+    transform: translateX(100%);
+    border-radius: 0 2rem 2rem 0;
+}
+
+.btn-container .white-text {
+    transition: 0.2s all;
+    color: white;
+}
+
+.fav-btn-container {
+    position: absolute;
+    border-radius: 50%;
+    top: 2.5rem;
+    right: 2.5rem;
+    box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+}
+
+.fav-icon {
+    width: 3rem;
+    height: 3rem;
+}
+
+@keyframes rotate {
+    0% {
+        transform: rotate(0);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.fav-btn-container:hover {
+    animation: rotate 0.5s linear;
+    stroke: white;
+}
