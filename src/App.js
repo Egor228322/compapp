@@ -23,6 +23,7 @@ import updateHistory from "./Helpers/updateHistory";
 import updateFavorites from "./Helpers/updateFavorites";
 import ForeCastDaily from "./components/ForeCastDaily";
 import getForeCastDaily from "./AJAX/curForeCastDaily";
+import Celestials from "./components/Celestials";
 
 const KEY = '94db76b31b0a5fae229f081992ccef80';
 
@@ -172,7 +173,8 @@ function App() {
           <Mode />
           <WidgetsMenu />
         </UpperBar>
-          <Data>
+        <Data>
+          <Celestials />
             <DataMain>
               {PopulateData()}
             </DataMain>
