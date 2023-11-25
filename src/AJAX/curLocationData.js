@@ -4,6 +4,7 @@ export default async function fetchCity(lat, lng, setIsLoadingData, setLocationD
           setIsLoadingData(true);
           const res = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lng}&appid=${KEY}&units=metric`);
           const data = await res.json();
+          console.log(data);
             
           let {
                main: {
@@ -11,8 +12,11 @@ export default async function fetchCity(lat, lng, setIsLoadingData, setLocationD
                  feels_like,
                  temp_min,
                  temp_max,
-            },
+                 humidity,
+                 pressure
+              },
             weather,
+            visibility,
             dt,
             timezone,
             name,
@@ -21,8 +25,7 @@ export default async function fetchCity(lat, lng, setIsLoadingData, setLocationD
           } = data;
               
           const milliSecondsDt = dt * 1000;
-        const milliSecondsTime = timezone * 1000;
-        /* const { lat, lng } = coords; */
+          const milliSecondsTime = timezone * 1000;
 
           const tempInFahrenheit = Math.round((temp * 9 / 5) + 32);
           const feelsLikeInFahrenheit = Math.round((feels_like * 9 / 5) + 32);

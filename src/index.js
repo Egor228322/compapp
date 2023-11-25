@@ -21,11 +21,13 @@ import './styles/WidgetsMenu.css'
 import './styles/Entry.css'
 import './styles/ButtonStyles.css'
 import App from './App';
+import Test from './Test';
+import './TestStyles.css';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
     <React.StrictMode>
-        <App />
+        <Test />
     </React.StrictMode>
 
 );
