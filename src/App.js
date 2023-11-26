@@ -124,7 +124,7 @@ function App() {
     const index = checkID(id, history);
     if (history.length === 10) {
       if (typeof index !== 'number') {
-        updateHistory(his, setHistory, history);
+        updateHistory(his, setHistory, history, index);
       }
       else {
         return;
@@ -134,11 +134,15 @@ function App() {
         setHistory(history => [his, ...history]);
       }
       else {
-        return;
+        updateHistory(his, setHistory, history, index)
       }
     }
 
   }, [curLocationData]);
+
+  useEffect(function () {
+    console.log(history);
+  }, [history])
 
   const PopulateData = () => {
     if (Object.keys(curLocationData).length && curForeCast.length) {

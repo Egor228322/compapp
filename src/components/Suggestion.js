@@ -1,7 +1,6 @@
 
 
 function Suggestion({ data, setLocationData }) {
-    console.log(data.lat, data.lon);
     return (
         <li
             className="search-item"
@@ -10,7 +9,6 @@ function Suggestion({ data, setLocationData }) {
                 const value = e.currentTarget.dataset.value;
                 const [lat, lng, name] = value.split(':');
                 const coords = { lat, lng, name };
-                console.log(coords);
                 setLocationData(coords);
             }}>
             <span>

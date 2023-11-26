@@ -3,7 +3,6 @@
     justify-content: space-between;
     align-items: flex-end;
     padding: 1rem 2.6rem 2.6rem 2.6rem;
-    text-align: center;
     background-color: rgb(244, 215, 215);
     border-radius: 1rem;
     grid-row: 1;
@@ -38,6 +37,7 @@
     text-align: end;
     font-size: 3.2rem;
     font-weight: bold;
+    width: 13.95rem;
 }
 
 .condition {

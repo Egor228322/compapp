@@ -12,22 +12,12 @@ function Celestials() {
 
 
     return (
-        <>
-        <div><button
-          onClick={() => {
-            handleClick();
-            setRotated(!rotated);
-          }
-            }>
-          Click</button>
-      </div>
     <div className="celestials-container" >
       <div className="celestials" style={{ transform: `rotate(${rotation}deg)` }}>
         <div className="sun" style={{ opacity: rotated ? 0 : 1, transition: 'opacity 1s ease-in-out' }}></div>
           <div className="moon" style={{ opacity: !rotated ? 0 : 1, transition: 'opacity 1s ease-in-out' }}></div>
       </div>
-            </div>
-        </>
+    </div>
   );
 }
 

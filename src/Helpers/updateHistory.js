@@ -1,6 +1,13 @@
-export default function updateHistory(his, setHistory, history) {
-    const copy = [...history];
-    copy.pop();
-    copy.unshift(his);
-    setHistory(() => copy);
+export default function updateHistory(his, setHistory, history, index) {
+    if (!index) {
+        const copy = [...history];
+        copy.pop();
+        copy.unshift(his);
+        setHistory(() => copy);
+    }
+    else {
+        const copy = history.filter((_, i) => i !== index);
+        console.log(copy);
+        setHistory(() => copy);
+    }
 }

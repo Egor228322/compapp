@@ -1,10 +1,8 @@
 .celestials-container {
-    
-    position: absolute;
-    top: 29%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 100%;
     z-index: 0;
+    position: relative;
 }
 
 .celestials-container::after {
@@ -17,6 +15,10 @@
 }
 
 .celestials {
+    position: absolute;
+    top: 2.25%;
+    left: 45%;
+
     transition: all 2s;
     display: flex;
     flex-direction: column;
