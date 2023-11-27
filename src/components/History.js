@@ -9,7 +9,8 @@ function History({ history, setLocationData }) {
         </ul>
     );
     } else {
-        return <p>There are currently no entries</p>;
+       return <p className="error-entries"><span>There are currently no History entries.</span>
+                    <span>Search and Select a location.</span></p>;
     }
 }
 

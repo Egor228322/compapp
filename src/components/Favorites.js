@@ -9,7 +9,7 @@ function Favorites({ favorites, setLocationData }) {
         </ul>
     );
     } else {
-        return <p>There are currently no entries</p>;
+        return <p className="error-entries">There are currently no entries</p>;
     }
 }
 

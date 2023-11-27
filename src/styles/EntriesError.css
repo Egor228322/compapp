@@ -1,0 +1,10 @@
+.error-entries {
+    font-size: 2rem;
+    text-align: center;
+    margin: 2rem;
+    font-weight: 700;
+}
+
+.error-entries span {
+    display: block;
+}
