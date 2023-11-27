@@ -26,7 +26,7 @@ function Temp({ locationData, handleFav, mode }) {
                 {`${mode === 'c' ? C.temp : F.temp}°`} 
             </h1>
             </div>
-            <div className="fav-btn-container" onClick={() => handleFav(locationData)}>
+            <div className="fav-btn-container" onClick={() => handleFav(locationData)} role="button">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="fav-icon">
                         <path strokeLinecap="round" strokeLinejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
                     </svg>

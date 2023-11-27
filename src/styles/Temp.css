@@ -12,9 +12,11 @@
 
 .main-data-temp {
     text-align: start;
+    grid-column: 1 / span 2;
 }
+
 .location-temp {
-    display: flex;
+    display: grid;
     align-items: center;
     font-size: 4.2rem;
     gap: 5px;
@@ -34,10 +36,11 @@
 }
 
 .info-temp {
+    grid-column: 2;
     text-align: end;
     font-size: 3.2rem;
     font-weight: bold;
-    width: 13.95rem;
+    width: 13.7rem;
 }
 
 .condition {

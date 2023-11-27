@@ -24,6 +24,7 @@ import updateFavorites from "./Helpers/updateFavorites";
 import ForeCastDaily from "./components/ForeCastDaily";
 import getForeCastDaily from "./AJAX/curForeCastDaily";
 import Celestials from "./components/Celestials";
+import Loader from "./components/Loader";
 
 const KEY = '94db76b31b0a5fae229f081992ccef80';
 
@@ -145,16 +146,15 @@ function App() {
   }, [history])
 
   const PopulateData = () => {
-    if (Object.keys(curLocationData).length && curForeCast.length) {
+    if (!isLoadingData && !isLoadingForecast && !isLoadingForecastDaily && Object.keys(curLocationData).length) {
       return <>
         <Temp locationData={curLocationData} handleFav={handleFav} mode={mode} />
         <Widgets />
         <ForeCastDaily forecast={curForeCastDaily} mode={mode} />
         <ForeCast forecast={curForeCast} mode={mode} />
-        
       </>
     } else {
-      return <p>Loading...</p>
+      return <Loader />
     }
   }
 
