@@ -1,4 +1,7 @@
-function Entry({data, setLocationData}) {
+function Entry({ data, setLocationData }) {
+
+    console.log(data);
+
     const time = new Date();
     const month = `${time.getMonth()}`.padStart(2, '0');
     const day = `${time.getDate()}`.padStart(2, '0');

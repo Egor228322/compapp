@@ -15,7 +15,6 @@ import fetchCity from "./AJAX/curLocationData";
 import getForeCast from "./AJAX/curForecastData";
 import SearchBar from "./components/SearchBar";
 import Mode from "./components/Mode";
-import WidgetsMenu from "./components/WidgetsMenu";
 import geoCode from "./AJAX/locationList";
 import checkID from "./Helpers/checkID";
 import Favorites from "./components/Favorites";
@@ -30,7 +29,7 @@ const KEY = '94db76b31b0a5fae229f081992ccef80';
 
 function App() {
 
-  const [query, setQuery] = useState('');
+  
   const [curLocationData, setCurLocationData] = useState({});
   const [curForeCast, setCurForeCast] = useState([]);
   const [curForeCastDaily, setCurForeCastDaily] = useState([]);
@@ -50,19 +49,7 @@ function App() {
   const [isLoadingForecast, setIsLoadingForecast] = useState(false);
   const [isLoadingForecastDaily, setIsLoadingForecastDaily] = useState(false);
 
-  useEffect(() => {
-    const controller = new AbortController();
-
-    if (!query.length) {
-      setLocationList([]);
-    } else {
-      geoCode(setLocationList, setIsLoadingList, controller, query, KEY);
-    }
-
-    return () => {
-      controller.abort();
-    };
-  }, [query]);
+  
 
   useEffect(() => {
     const fetchCurrentLocation = async () => {
@@ -90,15 +77,24 @@ function App() {
   }, []);
 
   function handleFav(data) {
-    const id = checkID(data.id, favorites);
+
+    console.log(data);
+    const { lat, lon } = data.coord;
+    const { name, id } = data;
+    console.log(name, lat, lon, id);
+
+    const newEntry = { lat, lon, name, id };
+    console.log(newEntry);
+
+    const unique = checkID(id, favorites);
     console.log(id);
-    if (typeof id === "number") {
+    if (typeof unique === "number") {
         updateFavorites(id, setFavorites, favorites);
     }
     else if (favorites.length === 10) {
       return;
     } else {
-      return setFavorites(() => [data, ...favorites])
+      return setFavorites(() => [newEntry, ...favorites])
     }
 
   }
@@ -110,7 +106,6 @@ function App() {
     fetchCity(lat, lng, setIsLoadingData, setCurLocationData, KEY, name, locationData);
     getForeCastDaily(lat, lng, setCurForeCastDaily, setIsLoadingForecastDaily, KEY);
     getForeCast(lat, lng, setIsLoadingForecast, setCurForeCast, KEY);
-    setQuery('');
   }, [locationData]);
 
   useEffect(function () {
@@ -170,12 +165,13 @@ function App() {
         <DataField>
         <UpperBar>
           <SearchBar
-            query={query}
-            setQuery={setQuery}
+            locationData={locationData}
             locationList={locationList}
-            setLocationData={setLocationData} />
+            setLocationData={setLocationData}
+            setLocationList={setLocationList}
+            setIsLoadingList={setIsLoadingList}
+            KEY={KEY} />
           <Mode />
-          <WidgetsMenu />
         </UpperBar>
         <Data>
           <Celestials />

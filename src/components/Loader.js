@@ -1,7 +1,10 @@
 function Loader() {
     return (
-        <div className="spinner">
-            <p>Loading...</p>
+        <div className="spinner-container">
+         <div class="spinner">
+            <div class="circle"></div>
+            <div class="cutout"></div>
+            </div>
         </div>
     )
 }

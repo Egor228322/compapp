@@ -1,6 +1,28 @@
+import { useEffect, useState } from "react";
 import Suggestion from "./Suggestion"
+import geoCode from "../AJAX/locationList";
 
-function SearchBar({ query, setQuery, locationList, setLocationData }) {
+function SearchBar({locationData, locationList, setLocationData, setLocationList, setIsLoadingList, KEY }) {
+    
+    const [query, setQuery] = useState('');
+
+    useEffect(() => {
+    const controller = new AbortController();
+
+    if (!query.length) {
+      setLocationList([]);
+    } else {
+      geoCode(setLocationList, setIsLoadingList, controller, query, KEY);
+    }
+
+    return () => {
+      controller.abort();
+    };
+    }, [query]);
+    
+    useEffect(function () {
+        setQuery('')
+    }, [locationData])
 
     return (
         <div className="search">
