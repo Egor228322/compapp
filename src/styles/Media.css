@@ -1,0 +1,84 @@
+@media (max-width: 72em) {
+    .input {
+        width: 40rem;
+    }
+}
+
+@media (max-width: 60em) {
+    :root {
+        font-size: 56.8%;
+    }
+}
+
+@media (max-width: 54em) {
+    :root {
+        font-size: 52.6%;
+    }
+}
+
+@media (max-width: 50em) {
+    :root {
+        font-size: 44.8%;
+    }
+}
+
+@media (max-width: 44em) {
+    :root {
+        font-size: 40%;
+    }
+}
+
+@media (max-width: 38em) {
+    :root {
+        font-size: 34.8%;
+    }
+}
+
+@media (max-width: 32em) {
+    :root {
+        font-size: 38.8%;
+    }
+
+    .global-layout {
+        display: flex;
+    }
+
+    .data-field {
+        width: 100%;
+    }
+
+
+    .sidebar {
+        display: none;
+    }
+
+}
+
+@media (max-width: 28em) {
+
+    :root {
+        font-size: 23.4%;
+    }
+
+    .data-main {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        padding: 10rem ;
+    }
+
+
+}
+
+
+/* @media (max-width: 84em) {
+
+}
+
+@media (max-width: 75em) {
+
+}
+
+@media (max-width: 59em) {
+
+} */

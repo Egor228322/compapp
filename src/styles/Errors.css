@@ -8,3 +8,7 @@
 .error-entries span {
     display: block;
 }
+
+.input-error {
+    padding: 1.5rem;
+}

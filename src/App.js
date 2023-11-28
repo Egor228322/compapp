@@ -15,7 +15,6 @@ import fetchCity from "./AJAX/curLocationData";
 import getForeCast from "./AJAX/curForecastData";
 import SearchBar from "./components/SearchBar";
 import Mode from "./components/Mode";
-import geoCode from "./AJAX/locationList";
 import checkID from "./Helpers/checkID";
 import Favorites from "./components/Favorites";
 import updateHistory from "./Helpers/updateHistory";

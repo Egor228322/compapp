@@ -3,7 +3,7 @@ import { useState } from "react";
 function Temp({ locationData, handleFav, mode }) {
 
   const { C, F, weather, dt, timezone, name, id, coord:{lat, lon} } = locationData;
-  const condition = weather[0].main;
+    const { condition, icon } = weather[0];
 
     let date = new Date(dt + timezone);
     date = date.toUTCString().slice(5, -7);
@@ -23,7 +23,7 @@ function Temp({ locationData, handleFav, mode }) {
                 </div>
                 <p className="temp-date">{date}</p>
                 <h1 className="temp-current">
-                {`${mode === 'c' ? C.temp : F.temp}°`} 
+                   {/*  <span><img src={`../icons/${icon}.png`} alt="current weather"></img></span> */}{`${mode === 'c' ? C.temp : F.temp}°`} 
             </h1>
             </div>
             <div className="fav-btn-container" onClick={() => handleFav(locationData)} role="button">

@@ -1,7 +1,7 @@
 
 function DataField({ children }) {
     return (
-        <div>
+        <div className="data-field">
           {children}
         </div>
     )

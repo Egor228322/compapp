@@ -38,7 +38,7 @@ function SearchBar({locationData, locationList, setLocationData, setLocationList
                 <ul className="search-suggestions">
                     {locationList.length ?
                         locationList.map((data, i) => <Suggestion data={data} setLocationData={setLocationData} key={i} />)
-                    : <p>Invalid input</p>}
+                    : <p className="input-error">No input or Invalid input</p>}
                 </ul>
             </div>
         </div>
