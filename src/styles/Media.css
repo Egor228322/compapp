@@ -4,35 +4,54 @@
     }
 }
 
-@media (max-width: 60em) {
+@media (max-width: 68em) {
     :root {
         font-size: 56.8%;
     }
 }
 
-@media (max-width: 54em) {
+@media (max-width: 62em) {
     :root {
         font-size: 52.6%;
     }
 }
 
-@media (max-width: 50em) {
+@media (max-width: 58em) {
     :root {
-        font-size: 44.8%;
+        font-size: 48%;
+    }
+}
+
+@media (max-width: 54em) {
+    :root {
+        font-size: 42%;
+    }
+}
+
+@media (max-width: 48em) {
+    :root {
+        font-size: 38%;
     }
 }
 
 @media (max-width: 44em) {
     :root {
-        font-size: 40%;
+        font-size: 34.2%;
     }
 }
 
-@media (max-width: 38em) {
+@media (max-width: 40em) {
     :root {
-        font-size: 34.8%;
+        font-size: 30.8%;
     }
 }
+
+@media (max-width: 36em) {
+    :root {
+        font-size: 26.2%;
+    }
+}
+
 
 @media (max-width: 32em) {
     :root {
@@ -46,7 +65,6 @@
     .data-field {
         width: 100%;
     }
-
 
     .sidebar {
         display: none;

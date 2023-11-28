@@ -1,5 +1,6 @@
 
-.btn-container {
+.btn-container.fav,
+.btn-container.his {
     display: flex;
     position: relative;
     cursor: pointer;
@@ -8,6 +9,23 @@
     border-radius: 2rem;
     overflow: hidden;
 }
+
+.btn-container.light,
+.btn-container.dark {
+    display: flex;
+    position: relative;
+    cursor: pointer;
+    width: 40%;
+    margin: 0 auto;
+    border-radius: 2rem;
+    overflow: hidden;
+    display: inline-block;
+}
+
+.light-dark-button {
+    width: 30rem;
+}
+
 
 .slider {
     position: absolute;

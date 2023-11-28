@@ -1,25 +1,41 @@
-import { useState } from "react"
-
-export default function Button({open, setOpen}) {
+export default function Button({role, data1, data2, onClick }) {
 
 
     return (
-        <div className={`btn-container ${open}`}>
+        <div className={`btn-container ${role}`}>
             <span className="slider"></span>
-            <div 
-                className={`btn btn-left ${open === 'fav' ? 'active' : ''}`}
+            {role === 'fav' || 'his' ?
+             (<><div 
+                className={`btn btn-left ${role === 'fav' ? 'active' : ''}`}
                 role="button"
                 tabIndex={0}
-                onClick={() => setOpen('fav')}>
-                    <span className={`text ${open === 'fav' ? 'white-text' : ''}`}>Fav</span>
+                onClick={() => onClick('fav')}>
+                    <span className={`text ${role === 'fav' ? 'white-text' : ''}`}>{data1}</span>
             </div>
             <div 
-                className={`btn btn-right ${open === 'his' ? 'active' : ''}`}
+                className={`btn btn-right ${role === 'his' ? 'active' : ''}`}
                 role="button"
                 tabIndex={0}
-                onClick={() => setOpen('his')}>
-                    <span className={`text ${open === 'his' ? 'white-text' : ''}`}>His</span>
+                onClick={() => onClick('his')}>
+                        <span className={`text ${role === 'his' ? 'white-text' : ''}`}>{data2}</span>
+                    </div>
+                </>) :
+                (<><div 
+                className={`btn btn-left ${role === 'light' ? 'active' : ''}`}
+                role="button"
+                tabIndex={0}
+                onClick={() => onClick('light')}>
+                    <span className={`text ${role === 'light' ? 'white-text' : ''}`}>{data1}</span>
             </div>
+            <div 
+                className={`btn btn-right ${role === 'dark' ? 'active' : ''}`}
+                role="button"
+                tabIndex={0}
+                onClick={() => onClick('dark')}>
+                        <span className={`text ${role === 'dark' ? 'white-text' : ''}`}>{data2}</span>
+                    </div>
+                </>)}
+            
         </div>
     )
 }

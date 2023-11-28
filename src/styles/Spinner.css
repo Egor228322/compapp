@@ -6,8 +6,8 @@
 }
 
 .spinner {
-    width: 100px;
-    height: 100px;
+    width: 10rem;
+    height: 10rem;
     position: relative;
     animation: spinAndScale 0.5s infinite linear;
 }

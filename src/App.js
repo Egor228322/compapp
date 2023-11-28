@@ -23,6 +23,7 @@ import ForeCastDaily from "./components/ForeCastDaily";
 import getForeCastDaily from "./AJAX/curForeCastDaily";
 import Celestials from "./components/Celestials";
 import Loader from "./components/Loader";
+import Button from "./components/Button";
 
 const KEY = '94db76b31b0a5fae229f081992ccef80';
 
@@ -160,17 +161,18 @@ function App() {
           (<History history={history} setLocationData={setLocationData} />) : 
           (<Favorites favorites={favorites} setLocationData={setLocationData} />)
         }
-        </SideBar> 
+      </SideBar>
         <DataField>
-        <UpperBar>
+        <UpperBar theme={theme} setTheme={setTheme}>
           <SearchBar
             locationData={locationData}
             locationList={locationList}
             setLocationData={setLocationData}
             setLocationList={setLocationList}
             setIsLoadingList={setIsLoadingList}
-            KEY={KEY} />
-          <Mode />
+            KEY={KEY}
+            theme={theme}
+            setTheme={setTheme} />
         </UpperBar>
         <Data>
           <Celestials />

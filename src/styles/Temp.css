@@ -13,13 +13,19 @@
 .main-data-temp {
     text-align: start;
     grid-column: 1 / span 2;
+    width: 20rem;
 }
 
 .location-temp {
-    display: grid;
+    display: flex;
     align-items: center;
     font-size: 4.2rem;
     gap: 5px;
+}
+
+.icon-main {
+    width: 8rem;
+    height: 8rem;
 }
 
 .location-icon {
@@ -32,6 +38,9 @@
 }
 
 .temp-current {
+    display: flex;
+    align-items: center;
+
     font-size: 5rem;
 }
 
@@ -40,7 +49,7 @@
     text-align: end;
     font-size: 3.2rem;
     font-weight: bold;
-    width: 13.7rem;
+    width: 15rem;
 }
 
 .condition {
