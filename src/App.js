@@ -14,7 +14,6 @@ import DataMain from "./components/DataMain";
 import fetchCity from "./AJAX/curLocationData";
 import getForeCast from "./AJAX/curForecastData";
 import SearchBar from "./components/SearchBar";
-import Mode from "./components/Mode";
 import checkID from "./Helpers/checkID";
 import Favorites from "./components/Favorites";
 import updateHistory from "./Helpers/updateHistory";
@@ -23,7 +22,6 @@ import ForeCastDaily from "./components/ForeCastDaily";
 import getForeCastDaily from "./AJAX/curForeCastDaily";
 import Celestials from "./components/Celestials";
 import Loader from "./components/Loader";
-import Button from "./components/Button";
 
 const KEY = '94db76b31b0a5fae229f081992ccef80';
 
@@ -175,7 +173,7 @@ function App() {
             setTheme={setTheme} />
         </UpperBar>
         <Data>
-          <Celestials />
+          <Celestials theme={theme}/>
             <DataMain>
               {PopulateData()}
             </DataMain>

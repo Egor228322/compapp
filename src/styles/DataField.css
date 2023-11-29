@@ -1,5 +1,9 @@
 .data-container {
-    height: 93.75vh;
+    height: 95.8%;
     background-color: grey;
     position: relative;
+}
+
+.data-field {
+    height: 100vh;
 }

@@ -4,7 +4,7 @@ export default function Button({role, data1, data2, onClick }) {
     return (
         <div className={`btn-container ${role}`}>
             <span className="slider"></span>
-            {role === 'fav' || 'his' ?
+            {role === 'fav' || role === 'his' ?
              (<><div 
                 className={`btn btn-left ${role === 'fav' ? 'active' : ''}`}
                 role="button"
