@@ -8,9 +8,15 @@
 
 :root {
   font-size: 62.5%;
-  --main-color: #0096C7;
-  --secondary-color: #0077B6;
-  --tertiary-color: #299AD0;
+  --main-backgroundColor: #0096C7;
+  --secondary-backgroundColor: #0077B6;
+  --tertiary-backgroundColor: #299AD0;
+  --main-backgroundColor-dark: #002e3d;
+  --secondary-backgroundColor-dark: #104664;
+  --tertiary-backgroundColor-dark: #14465d;
+  --entry-color: white;
+  
+
   --light-primary: #FF8800;
   --light-secondary:#FF7B00;
   --color-font: #212529;

@@ -1,4 +1,9 @@
+import { useContext } from "react";
+import { ThemeContext } from "../App";
+
 function Entry({ data, setLocationData }) {
+
+    const { theme } = useContext(ThemeContext);
 
     console.log(data);
 
@@ -12,7 +17,7 @@ function Entry({ data, setLocationData }) {
     const curTime = `${hours}:${minutes}`;
     
     return (
-        <li className="entry"
+        <li className="entry" style={{ backgroundColor: theme === 'dark' ? 'var(--secondary-backgroundColor-dark)': 'var(--secondary-backgroundColor)'}}
             data-value={`${data.lat}:${data.lon}`}
             onClick={(e) => {
                 const value = e.currentTarget.dataset.value;

@@ -1,9 +1,9 @@
 function Loader() {
     return (
         <div className="spinner-container">
-         <div class="spinner">
-            <div class="circle"></div>
-            <div class="cutout"></div>
+         <div className="spinner">
+            <div className="circle"></div>
+            <div className="cutout"></div>
             </div>
         </div>
     )

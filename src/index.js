@@ -24,7 +24,7 @@ import './styles/Celestials.css'
 import './styles/Spinner.css'
 import './styles/Errors.css'
 import './styles/Media.css'
-import App from './App';
+import { App } from './App';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

@@ -2,6 +2,7 @@ import Entry from "./Entry"
 
 function History({ history, setLocationData }) {
 
+
    if (history.length) {
     return (
         <ul className="history">

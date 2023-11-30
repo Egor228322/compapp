@@ -1,5 +1,8 @@
-export default function Button({role, data1, data2, onClick }) {
+import { ThemeContext } from "../App"
 
+export default function Button({ role, data1, data2, onClick }) {
+
+    const { theme } = ThemeContext;
 
     return (
         <div className={`btn-container ${role}`}>

@@ -1,4 +1,4 @@
-import { createContext, useEffect, useRef, useState } from "react"
+import { createContext, useEffect, useState } from "react"
 
 import UpperBar from "./components/UpperBar";
 import DataField from "./Halves/DataField";
@@ -25,7 +25,7 @@ import Loader from "./components/Loader";
 
 const KEY = '94db76b31b0a5fae229f081992ccef80';
 
-const ThemeModeContext = createContext();
+const ThemeContext = createContext();
 
 function App() {
 
@@ -154,9 +154,8 @@ function App() {
   }
 
   return (
-    <ThemeModeContext.Provider value={{
+    <ThemeContext.Provider value={{
       theme: theme,
-      mode: mode
     }}>
     <div className="global-layout">
       <SideBar>
@@ -186,9 +185,9 @@ function App() {
           </Data>
         </DataField>
       </div>
-    </ThemeModeContext.Provider>
+    </ThemeContext.Provider>
   )
 }
 
-export default App
+export { App, ThemeContext };
 
