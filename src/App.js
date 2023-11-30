@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react"
+import { createContext, useEffect, useRef, useState } from "react"
 
 import UpperBar from "./components/UpperBar";
 import DataField from "./Halves/DataField";
@@ -24,6 +24,8 @@ import Celestials from "./components/Celestials";
 import Loader from "./components/Loader";
 
 const KEY = '94db76b31b0a5fae229f081992ccef80';
+
+const ThemeModeContext = createContext();
 
 function App() {
 
@@ -152,6 +154,10 @@ function App() {
   }
 
   return (
+    <ThemeModeContext.Provider value={{
+      theme: theme,
+      mode: mode
+    }}>
     <div className="global-layout">
       <SideBar>
         <FavHisButton open={open} setOpen={setOpen} />
@@ -179,7 +185,8 @@ function App() {
             </DataMain>
           </Data>
         </DataField>
-    </div>
+      </div>
+    </ThemeModeContext.Provider>
   )
 }
 

@@ -1,8 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Smooch+Sans:wght@300;400;600&display=swap');
 
-
-
-
 * {
   margin: 0;
   padding: 0;
@@ -28,48 +25,4 @@ body {
   grid-template-columns: 1fr 3fr;
   height: 100vh;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* .widgets-menu {
-  
-}
-
-.celsius-fahrenheit {
-
-} */
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
