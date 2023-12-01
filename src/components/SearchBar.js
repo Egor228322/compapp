@@ -1,9 +1,12 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import Suggestion from "./Suggestion"
 import geoCode from "../AJAX/locationList";
+import { ThemeContext } from "../App";
 
 function SearchBar({locationData, locationList, setLocationData, setLocationList, setIsLoadingList, KEY }) {
     
+    const { theme } = useContext(ThemeContext);
+
     const [query, setQuery] = useState('');
 
     useEffect(() => {
@@ -26,7 +29,7 @@ function SearchBar({locationData, locationList, setLocationData, setLocationList
 
     return (
         <div className="search">
-            <label>Search by city: </label>
+            <label style={{color : theme === 'dark' ? 'var(--entry-color)' : '' }}>Search by city: </label>
             <div className="input-container">
                 <input
                     type="text"

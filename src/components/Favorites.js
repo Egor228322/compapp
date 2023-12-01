@@ -1,6 +1,10 @@
 import Entry from "./Entry"
+import { ThemeContext } from "../App";
+import { useContext } from "react";
 
 function Favorites({ favorites, setLocationData }) {
+
+    const { theme } = useContext(ThemeContext);
     
     if (favorites.length) {
     return (
@@ -9,7 +13,7 @@ function Favorites({ favorites, setLocationData }) {
         </ul>
     );
     } else {
-        return <p className="error-entries">There are currently no entries</p>;
+        return <p className="error-entries" style={{color : theme === 'dark' && 'var(--entry-color)'}}>There are currently no entries</p>;
     }
 }
 

@@ -1,7 +1,10 @@
 import Entry from "./Entry"
+import { ThemeContext } from "../App";
+import { useContext } from "react";
 
 function History({ history, setLocationData }) {
 
+    const { theme } = useContext(ThemeContext);
 
    if (history.length) {
     return (
@@ -10,7 +13,7 @@ function History({ history, setLocationData }) {
         </ul>
     );
     } else {
-       return <p className="error-entries"><span>There are currently no History entries.</span>
+       return <p className="error-entries" style={{color : theme === 'dark' && 'var(--entry-color)'}}><span>There are currently no History entries.</span>
                     <span>Search and Select a location.</span></p>;
     }
 }

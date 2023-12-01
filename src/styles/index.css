@@ -11,14 +11,17 @@
   --main-backgroundColor: #0096C7;
   --secondary-backgroundColor: #0077B6;
   --tertiary-backgroundColor: #299AD0;
-  --main-backgroundColor-dark: #002e3d;
+  --main-backgroundColor-dark: rgb(21, 23, 62);
   --secondary-backgroundColor-dark: #104664;
   --tertiary-backgroundColor-dark: #14465d;
   --entry-color: white;
   
 
-  --light-primary: #FF8800;
-  --light-secondary:#FF7B00;
+  --data-primary: #FF8800;
+  --data-secondary:#FF7B00;
+  --data-primary-dark: rgb(49, 28, 5);
+  --data-secondary-dark:rgb(23, 14, 71);
+
   --color-font: #212529;
 }
 
