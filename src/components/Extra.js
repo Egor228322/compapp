@@ -1,4 +1,4 @@
-function Widget() {
+function Extra() {
     return (
         <div className="widget">
             <p>Driving Condition</p>
@@ -7,4 +7,4 @@ function Widget() {
     )
 }
 
-export default Widget
+export default Extra

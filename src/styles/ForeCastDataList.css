@@ -11,12 +11,6 @@
     margin: 0;
     white-space: nowrap;
     overflow-x: scroll;
-    cursor: grab;
-    user-select: none;
-}
-
-.foreCast-list:active {
-    cursor: grabbing;
 }
 
 .foreCast-list::-webkit-scrollbar {

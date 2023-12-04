@@ -9,7 +9,7 @@ import Data from "./components/Data";
 import Temp from "./components/Temp";
 import ForeCast from "./components/ForeCast";
 import DataMain from "./components/DataMain";
-import Extras from "./components/Widgets";
+import Extras from "./components/Extras";
 
 import fetchCity from "./AJAX/curLocationData";
 import getForeCast from "./AJAX/curForecastData";
