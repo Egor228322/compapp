@@ -21,6 +21,17 @@
     overflow: hidden;
 }
 
+.btn-container.imperial,
+.btn-container.metric {
+    display: flex;
+    position: relative;
+    cursor: pointer;
+    width: 15%;
+    margin: 0 auto;
+    border-radius: 2rem;
+    overflow: hidden;
+}
+
 .light-dark-button {
     width: 30rem;
 }
@@ -28,7 +39,6 @@
 
 .slider {
     position: absolute;
-    background-color: orange;
     width: 50%;
     height: 100%;
     top: 0;
@@ -55,12 +65,10 @@
 }
 
 .btn-left {
-    background-color: aqua;
     height: 100%;
 }
 
 .btn-right {
-    background-color: red;
     height: 100%;
 }
 

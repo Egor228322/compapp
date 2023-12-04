@@ -8,8 +8,8 @@ import History from './components/History';
 import Data from "./components/Data";
 import Temp from "./components/Temp";
 import ForeCast from "./components/ForeCast";
-import Widgets from "./components/Widgets";
 import DataMain from "./components/DataMain";
+import Extras from "./components/Widgets";
 
 import fetchCity from "./AJAX/curLocationData";
 import getForeCast from "./AJAX/curForecastData";
@@ -23,13 +23,13 @@ import getForeCastDaily from "./AJAX/curForeCastDaily";
 import Celestials from "./components/Celestials";
 import Loader from "./components/Loader";
 
+
 const KEY = '94db76b31b0a5fae229f081992ccef80';
 
 const ThemeContext = createContext();
 
 function App() {
 
-  
   const [curLocationData, setCurLocationData] = useState({});
   const [curForeCast, setCurForeCast] = useState([]);
   const [curForeCastDaily, setCurForeCastDaily] = useState([]);
@@ -42,14 +42,12 @@ function App() {
     return JSON.parse(localStorage.getItem('favorites')) || []
   });
   const [open, setOpen] = useState('fav');
-  const [mode, setMode] = useState('c');
+  const [mode, setMode] = useState('imperial');
   const [theme, setTheme] = useState('light');
   const [isLoadingList, setIsLoadingList] = useState(false);
   const [isLoadingData, setIsLoadingData] = useState(false);
   const [isLoadingForecast, setIsLoadingForecast] = useState(false);
   const [isLoadingForecastDaily, setIsLoadingForecastDaily] = useState(false);
-
-  
 
   useEffect(() => {
     const fetchCurrentLocation = async () => {
@@ -144,7 +142,7 @@ function App() {
     if (!isLoadingData && !isLoadingForecast && !isLoadingForecastDaily && Object.keys(curLocationData).length) {
       return <>
         <Temp locationData={curLocationData} handleFav={handleFav} mode={mode} />
-        <Widgets />
+        <Extras />
         <ForeCastDaily forecast={curForeCastDaily} mode={mode} />
         <ForeCast forecast={curForeCast} mode={mode} />
       </>
@@ -166,7 +164,7 @@ function App() {
         }
       </SideBar>
         <DataField>
-        <UpperBar theme={theme} setTheme={setTheme}>
+        <UpperBar theme={theme} setTheme={setTheme} mode={mode} setMode={setMode}>
           <SearchBar
             locationData={locationData}
             locationList={locationList}

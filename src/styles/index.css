@@ -15,6 +15,11 @@
   --secondary-backgroundColor-dark: #104664;
   --tertiary-backgroundColor-dark: #14465d;
   --entry-color: white;
+
+  --btn-color-dark: rgb(55, 58, 103);
+  --btn-slider-color: black;
+  --btn-slider-color-dark: rgb(151, 50, 164);
+
   
 
   --data-primary: #FF8800;

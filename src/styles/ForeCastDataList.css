@@ -3,6 +3,7 @@
     grid-row: 3;
     grid-column: span 2;
     border-radius: 1rem;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
 }
 
 .foreCast-list {
@@ -19,9 +20,9 @@
 .forecast-daily-list {
     grid-row: span 2;
     list-style: none;
-    background-color: bisque;
     border-radius: 1rem;
     padding: 2.2rem 1.2rem 2.2rem 1.2rem;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
 }
 
 .forecast-daily-list .daily-container:not(:last-child) {

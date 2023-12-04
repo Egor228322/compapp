@@ -3,7 +3,7 @@
     justify-content: space-between;
     align-items: flex-end;
     padding: 1rem 2.6rem 2.6rem 2.6rem;
-    background-color: bisque;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
     border-radius: 1rem;
     grid-row: 1;
     grid-column: 1;
@@ -40,7 +40,7 @@
 .temp-current {
     display: flex;
     align-items: center;
-
+    margin-left: -2rem;
     font-size: 5rem;
 }
 
@@ -50,16 +50,4 @@
     font-size: 3.2rem;
     font-weight: bold;
     width: 15rem;
-}
-
-.condition {
-
-}
-
-.temp-max-min {
-
-}
-
-.temp-feels-like {
-
 }
