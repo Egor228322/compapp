@@ -11,7 +11,7 @@ function ForeCastData({ forecast, mode }) {
                     className='icon-forecast'>
                 </img>
             </figure>
-            <p className="forecast-temp">{mode === 'celsius' ? forecast.F : forecast.C}°</p>
+            <p className="forecast-temp">{mode === 'metric' ? forecast.C : forecast.F}°</p>
         </li>
     )
 }

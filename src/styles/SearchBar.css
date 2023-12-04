@@ -9,7 +9,7 @@
     border-radius: 2rem;
     border: none;
     padding: 0.5rem 1rem;
-    border-bottom: 3px solid transparent;
+    /* border-bottom: 3px solid transparent; */
     font: inherit;
     transition: all 0.3s;
     width: 60rem;
@@ -23,7 +23,7 @@
 .input:focus-within {
     outline: none;
     border: none;
-    border-bottom: 3px solid var(--light-primary);
+    border-bottom: 10px solid var(--light-primary);
 }
 
 .input-container {

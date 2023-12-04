@@ -2,7 +2,7 @@
 
 function Temp({ locationData, handleFav, mode }) {
 
-    const { C, F, weather, dt, timezone, name, id, coord: { lat, lon } } = locationData;
+    const { C, F, weather, dt, timezone, name} = locationData;
     const { main, icon } = weather[0];
     console.log(weather)
 
@@ -24,7 +24,7 @@ function Temp({ locationData, handleFav, mode }) {
                 </div>
                 <p className="temp-date">{date}</p>
                 <h1 className="temp-current">
-                   <img src={require(`../icons/${icon}.png`)} alt="current weather" className="icon-main"></img>{`${mode === 'c' ? C.temp : F.temp}°`} 
+                   <img src={require(`../icons/${icon}.png`)} alt="current weather" className="icon-main"></img>{`${mode === 'metric' ? C.temp : F.temp}°`} 
             </h1>
             </div>
             <div className="fav-btn-container" onClick={() => handleFav(locationData)} role="button">
@@ -34,8 +34,8 @@ function Temp({ locationData, handleFav, mode }) {
             </div>
             <div className="info-temp">
                 <p className="temp-condition">{main}</p>
-                <p className="temp-max-min">{mode === 'c' ? `${C.tempMax} / ${C.tempMin}°` : `${F.tempMax} / ${F.tempMin}°`}</p>
-                <p className="temp-feels-like">Feels like: {mode === 'c' ? `${C.feelsLike}°` : `${F.feelsLike}°`}</p>
+                <p className="temp-max-min">{mode === 'metric' ? `${C.tempMax} / ${C.tempMin}°` : `${F.tempMax} / ${F.tempMin}°`}</p>
+                <p className="temp-feels-like">Feels like: {mode === 'metric' ? `${C.feelsLike}°` : `${F.feelsLike}°`}</p>
             </div>
             </div>
     )

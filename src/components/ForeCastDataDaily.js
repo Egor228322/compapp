@@ -10,7 +10,7 @@ function ForeCastDataDaily({forecast, mode}) {
                     className='daily-icon-forecast'>
                 </img>
             </figure>
-            <p className="daily-min-max">{mode === 'c' ?
+            <p className="daily-min-max">{mode === 'metric' ?
                 `${forecast.C.max}°/${forecast.C.min}°` : 
                 `${forecast.F.max}°/${forecast.F.min}°`}
             </p>
