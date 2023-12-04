@@ -107,8 +107,8 @@ function App() {
   }, [locationData]);
 
   useEffect(function () {
-    console.log(curForeCastDaily)
-  }, [curForeCastDaily])
+    console.log(curLocationData)
+  }, [curLocationData])
 
   useEffect(function () {
     if (!Object.keys(locationData).length) return;
@@ -142,7 +142,7 @@ function App() {
     if (!isLoadingData && !isLoadingForecast && !isLoadingForecastDaily && Object.keys(curLocationData).length) {
       return <>
         <Temp locationData={curLocationData} handleFav={handleFav} mode={mode} />
-        <Extras />
+        <Extras locationData={curLocationData} mode={mode} />
         <ForeCastDaily forecast={curForeCastDaily} mode={mode} />
         <ForeCast forecast={curForeCast} mode={mode} />
       </>

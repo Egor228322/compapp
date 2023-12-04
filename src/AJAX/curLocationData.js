@@ -14,7 +14,10 @@ export default async function fetchCity(lat, lng, setIsLoadingData, setLocationD
                  temp_max,
                  humidity,
                  pressure
-              },
+            },
+            wind: {
+              speed
+            },
             weather,
             visibility,
             dt,
@@ -26,11 +29,14 @@ export default async function fetchCity(lat, lng, setIsLoadingData, setLocationD
               
           const milliSecondsDt = dt * 1000;
           const milliSecondsTime = timezone * 1000;
-
+          speed = speed * (3600 / 1000);
+          pressure = pressure * 100;
+          
           const tempInFahrenheit = Math.round((temp * 9 / 5) + 32);
           const feelsLikeInFahrenheit = Math.round((feels_like * 9 / 5) + 32);
           const tempMinInFahrenheit = Math.round((temp_min * 9 / 5) + 32);
           const tempMaxInFahrenheit = Math.round((temp_max * 9 / 5) + 32);
+        
 
           if (Object.keys(locationData).length) {
             console.log(customName);
@@ -38,18 +44,25 @@ export default async function fetchCity(lat, lng, setIsLoadingData, setLocationD
           }
             
           const destructuredData = {
-            C: {
+            M: {
               temp: Math.round(temp),
               feelsLike: Math.round(feels_like),
               tempMin: Math.round(temp_min),
-              tempMax: Math.round(temp_max)
+              tempMax: Math.round(temp_max),
+              speed: speed.toFixed(2),
+              pressure: pressure.toFixed(),
+              visibility
             },
-            F: {
+            I: {
               temp: tempInFahrenheit,
               feelsLike: feelsLikeInFahrenheit,
               tempMin: tempMinInFahrenheit,
               tempMax: tempMaxInFahrenheit,
+              speed: (speed / 1.6).toFixed(2),
+              pressure: (pressure * 0.00014503773801).toFixed(),
+              visibility: (visibility / 1.6).toFixed()
             },
+            humidity,
             weather,
             dt: milliSecondsDt,
             timezone: milliSecondsTime,
