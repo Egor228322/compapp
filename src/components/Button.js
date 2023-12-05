@@ -5,24 +5,6 @@ export default function Button({ role, data1, data2, onClick }) {
 
     const { theme } = useContext(ThemeContext);
 
-
-    const getButtonClassName = (buttonRole, additionalClass = '') => {
-        return `btn btn-${buttonRole} ${role === buttonRole ? 'active' : ''} ${additionalClass}`;
-        //     `btn btn-left ${role === 'fav' ? 'active' : ''}`
-    }
-
-    const renderButton = () => {
-        return (
-            <div 
-                className={`btn btn-left ${role === 'fav' ? 'active' : ''}`}
-                role="button"
-                tabIndex={0}
-                onClick={() => onClick('fav')}>
-                    <span className={`text ${role === 'fav' ? 'white-text' : ''}`}>{data1}</span>
-            </div>
-        )
-    }
-
     return (
         <div
             className={`btn-container ${role}`}
