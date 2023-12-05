@@ -1,5 +1,8 @@
 
 function DataField({ children }) {
+
+    //returns the UpperBar, and the Data functional Components
+    //and powered by sponsor
     return (
         <div className="data-field">
         {children}

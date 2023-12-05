@@ -6,6 +6,8 @@ function History({ history, setLocationData }) {
 
     const { theme } = useContext(ThemeContext);
 
+    //return an error message if the entries are empty
+    //return a list of Entries with its own unique set of data
    if (history.length) {
     return (
         <ul className="history">

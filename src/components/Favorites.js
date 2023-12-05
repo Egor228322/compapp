@@ -6,6 +6,8 @@ function Favorites({ favorites, setLocationData }) {
 
     const { theme } = useContext(ThemeContext);
     
+    //return an error message if the entries are empty
+    //return a list of Entries with its own unique set of data
     if (favorites.length) {
     return (
         <ul className="history">

@@ -6,6 +6,9 @@ function UpperBar({ children, setTheme, mode, setMode }) {
     
     const { theme } = useContext(ThemeContext);
 
+
+    //return the SearchBar as well as two buttons repsonsible for the theme and the units
+    //Can change backgorund color based on the theme
     return (
         <div className="upper-bar" style={{backgroundColor : theme === 'dark' ? 'var(--data-secondary-dark)' : 'var(--tertiary-backgroundColor)'}}>
             {children}
