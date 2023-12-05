@@ -5,6 +5,8 @@ function Data({ children, curLocationData }) {
 
     const { theme } = useContext(ThemeContext);
 
+    //returns jsx for the data container which is bascially the background gradient and the DataMain cocntainer
+    //also returns a hyperlink at the bottom which redirects to the open weather website
     return (
         <div className="data-container" style={{
             background: theme === 'dark' ?

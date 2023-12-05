@@ -1,7 +1,10 @@
 
-
+//Accepts data fromt the geocode API
 function Suggestion({ data, setLocationData }) {
+
+    //Returns jsx for the possible locations with the same names
     return (
+        //List item contains a data-value attribute that stores the lat, lng so that it can be passed to the setLocationData function in App.js
         <li
             className="search-item"
             data-value={`${data.lat}:${data.lon}:${data.name}`}

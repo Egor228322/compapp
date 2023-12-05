@@ -3,30 +3,39 @@ import Suggestion from "./Suggestion"
 import geoCode from "../AJAX/locationList";
 import { ThemeContext } from "../App";
 
+//Accepts lots of props
 function SearchBar({locationData, locationList, setLocationData, setLocationList, setIsLoadingList, KEY }) {
     
     const { theme } = useContext(ThemeContext);
-
+    
+    //Contains state responsible for the input query
     const [query, setQuery] = useState('');
 
-    useEffect(() => {
-    const controller = new AbortController();
 
+    //Effect runs every time the query is changed
+    useEffect(() => {
+    //Create an abort controller
+    const controller = new AbortController();
+    
+    //Error handling
     if (!query.length) {
       setLocationList([]);
     } else {
       geoCode(setLocationList, setIsLoadingList, controller, query, KEY);
     }
 
+    //Returns a cleanup function that prevents a race condition
     return () => {
       controller.abort();
     };
     }, [query]);
     
+    //Clears the query when a selection is made from the list
     useEffect(function () {
         setQuery('')
     }, [locationData])
 
+    //Returns markup for the input as well as the suggestions list
     return (
         <div className="search">
             <label style={{color : theme === 'dark' ? 'var(--entry-color)' : '' }}>Search by city: </label>
