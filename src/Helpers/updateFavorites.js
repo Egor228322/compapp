@@ -1,3 +1,4 @@
+//This function updates favorites in case and entry is removed
 export default function updateFavorites(id, setFavorites, favorites) {
 
     let copy = [...favorites];

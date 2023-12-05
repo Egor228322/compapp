@@ -1,3 +1,4 @@
+//An asynchronous function that geocodes the location entrered via latitude and longitude
 export default async function geoCode(setLocationList, setIsLoadingList, controller, query, KEY) {
       try {
         setIsLoadingList(true);
@@ -7,6 +8,7 @@ export default async function geoCode(setLocationList, setIsLoadingList, control
         data.map(el => {
           const { lat, lon, country, state, name } = el;
 
+          //Every suggestion has its own unique set of data
           const updatedData = {
             lat,
             lon,

@@ -1,3 +1,4 @@
+//This function updates history when there are more than ten entries
 export default function updateHistory(his, setHistory, history, index) {
     if (!index) {
         const copy = [...history];
