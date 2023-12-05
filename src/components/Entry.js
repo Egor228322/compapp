@@ -4,17 +4,6 @@ import { ThemeContext } from "../App";
 function Entry({ data, setLocationData }) {
 
     const { theme } = useContext(ThemeContext);
-
-    console.log(data);
-
-    const time = new Date();
-    const month = `${time.getMonth()}`.padStart(2, '0');
-    const day = `${time.getDate()}`.padStart(2, '0');
-    const year = `${time.getFullYear()}`.padStart(2, '0');
-    const date = `${month}/${day}/${year}`;
-    const hours = `${time.getHours()}`.padStart(2, '0');
-    const minutes = `${time.getHours()}`.padStart(2, '0');
-    const curTime = `${hours}:${minutes}`;
     
     return (
         <li className="entry" style={{ backgroundColor: theme === 'dark' ? 'var(--secondary-backgroundColor-dark)': 'var(--secondary-backgroundColor)'}}
@@ -25,10 +14,13 @@ function Entry({ data, setLocationData }) {
                 const coords = { lat, lng, name: data.name }
                 setLocationData(coords);
             }}
-        >
-            <p className="date">{date}</p>
-            <p className="time">{curTime}</p>
-            <p className="location">{data.name}</p>
+        >   
+            <p className="location">
+                <span><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="location-icon-entry">
+  <path strokeLinecap="round" strokeLinejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z" />
+  <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z" />
+                    </svg>
+                    </span>{data.name}</p>
         </li>
     )
 }

@@ -175,7 +175,7 @@ function App() {
             theme={theme}
             setTheme={setTheme} />
         </UpperBar>
-        <Data>
+        <Data curLocationData={curLocationData}>
           <Celestials theme={theme}/>
             <DataMain>
               {PopulateData()}

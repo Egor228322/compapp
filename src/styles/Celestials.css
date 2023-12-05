@@ -1,13 +1,12 @@
 .celestials-container {
     z-index: 0;
     position: absolute;
-    top: 30%;
+    top: 29%;
     left: 50%;
     transform: translate(-50%, -50%);
 }
 
 .celestials {
-
     transition: all 2s;
     display: flex;
     flex-direction: column;

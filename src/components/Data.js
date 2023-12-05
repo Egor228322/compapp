@@ -1,7 +1,7 @@
 import { useContext } from "react"
 import { ThemeContext } from "../App"
 
-function Data({ children }) {
+function Data({ children, curLocationData }) {
 
     const { theme } = useContext(ThemeContext);
 
@@ -12,6 +12,7 @@ function Data({ children }) {
                 `linear-gradient(to bottom, var(--data-secondary), white)`
                 }}>
             {children}
+            <a href={`https://openweathermap.org/city/${curLocationData.id}`} target="_blank" rel="noreferrer" className="btn-hyperlink" role="button">Click for More</a>
         </div>
     )
 }

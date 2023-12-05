@@ -15,8 +15,6 @@ import './styles/SideBar.css'
 import './styles/Temp.css'
 import './styles/UpperBar.css'
 import './styles/Extras.css'
-import './styles/WidgetsList.css'
-import './styles/WidgetsMenu.css'
 import './styles/Entry.css'
 import './styles/ButtonStyles.css'
 import './styles/Celestials.css'
@@ -30,6 +28,5 @@ root.render(
     <React.StrictMode>
         <App />
     </React.StrictMode>
-
 );
 
