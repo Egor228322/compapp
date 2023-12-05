@@ -1,4 +1,4 @@
-
+//A functional component that is 1 of 19 list items displaying the time stamp, condition, and temp
 function ForeCastData({ forecast, mode }) {
     
     return (

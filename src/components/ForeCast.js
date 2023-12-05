@@ -1,5 +1,6 @@
 import ForeCastData from "./ForeCastData"
 
+//Container component
 function ForeCast({ forecast, mode }) {
 
     return (

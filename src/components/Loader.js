@@ -1,3 +1,5 @@
+
+//A styled component that is rendered when current location data is being fetched
 function Loader() {
     return (
         <div className="spinner-container">

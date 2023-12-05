@@ -1,4 +1,5 @@
 
+//The extras functional component features additional data that is not related to temperature
 function Extras({ locationData, mode }) {
     
     const { I, M, humidity } = locationData;

@@ -1,14 +1,14 @@
 
-
+//Functional component that displays the main data
 function Temp({ locationData, handleFav, mode }) {
 
     const { M, I, weather, dt, timezone, name} = locationData;
     const { main, icon } = weather[0];
-    console.log(weather)
 
     let date = new Date(dt + timezone);
     date = date.toUTCString().slice(5, -7);
 
+    //returns all the main temperature data with some icons
     return (
         <div className="temp">
             <div className="main-data-temp">

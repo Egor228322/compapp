@@ -1,4 +1,6 @@
-export default async function fetchCity(lat, lng, setIsLoadingData, setLocationData, KEY, customName='', locationData='') {
+//This is a pure async function that fetches data for the current location.
+//In additiion it formats the json into objects with only the properties which are needed
+export default async function fetchCity(lat, lng, setIsLoadingData, setLocationData, KEY, customName = '', locationData = '') {
       try {
         console.log(lat, lng);
           setIsLoadingData(true);
@@ -43,7 +45,8 @@ export default async function fetchCity(lat, lng, setIsLoadingData, setLocationD
             name = customName;
           }
             
-          const destructuredData = {
+        const destructuredData = {
+            //Destructured data has two sets of data with the metric and imperial units
             M: {
               temp: Math.round(temp),
               feelsLike: Math.round(feels_like),

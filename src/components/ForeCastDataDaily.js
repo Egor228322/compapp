@@ -1,4 +1,7 @@
-function ForeCastDataDaily({forecast, mode}) {
+//Functional component that is a list item
+//displays the daily forecast for a week
+//Includes day, condition, min temp, and max temp
+function ForeCastDataDaily({ forecast, mode }) {
     return (
         <li className="daily-container">
             <p className="day">{forecast.day}</p>

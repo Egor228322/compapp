@@ -1,5 +1,6 @@
 import ForeCastDataDaily from "./ForeCastDataDaily"
 
+//container component
 function ForeCastDaily({forecast, mode}) {
     return (
         <>

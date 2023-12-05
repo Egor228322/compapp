@@ -1,3 +1,6 @@
+//This is a pure async function that fetches data for the hourly forecast.
+//In additiion it formats the json into objects with only the properties which are needed
+
 export default async function getForeCast(lat, lng, setIsLoadingForecast, setForeCast, KEY) {
         try {
           setIsLoadingForecast(true);
@@ -12,7 +15,7 @@ export default async function getForeCast(lat, lng, setIsLoadingForecast, setFor
             const hours = `${date.getHours()}`.padStart(2, '0');
             const min = `${date.getMinutes()}`.padStart(2, '0');
             const time = `${hours}:${min}`;
-
+            //Destructured data has two sets of data with the metric and imperial units
             return {
               time: time,
               C: Math.round(temp),

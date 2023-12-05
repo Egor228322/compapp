@@ -1,6 +1,8 @@
+
+//This is a pure async function that fetches data for the daily forecast.
+//In additiion it formats the json into objects with only the properties which are needed
 export default async function getForeCastDaily(lat, lon, setCurForeCastDaily, setIsLoadingForecastDaily, KEY) { 
     try {
-        console.log(lat, lon, KEY);
         setIsLoadingForecastDaily(true);
         const res = await fetch(`https://api.openweathermap.org/data/2.5/forecast/daily?lat=${lat}&lon=${lon}&cnt=7&units=metric&appid=${KEY}`);
         const data = await res.json();
@@ -20,10 +22,12 @@ export default async function getForeCastDaily(lat, lon, setCurForeCastDaily, se
             let day = new Date(dt * 1000).getDay();
             let curDay = new Date().getDay();
 
+            //If the timestamp in the forecast matches the current date, then the first entry will be "Today"
             if (day === curDay) {
                 day = 'Today';
             } else {
 
+                //Switch is responsible for converting timestamp to days of the week
                 switch (day) {
                     case 0:
                         day = 'Sunday';
@@ -52,6 +56,7 @@ export default async function getForeCastDaily(lat, lon, setCurForeCastDaily, se
             }
 
             return {
+                //Destructured data has two sets of data with the metric and imperial units
                 day,
                 C: {
                     max: max.toFixed(0),
