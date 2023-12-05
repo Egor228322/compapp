@@ -1,5 +1,8 @@
+//Import neccessary modules from the react and react-dom/client package
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+
+//Import all of the CSS files responsible for styling the page.
 import './styles/index.css';
 import './styles/Data.css'
 import './styles/DataField.css'

@@ -51,7 +51,7 @@ export default async function fetchCity(lat, lng, setIsLoadingData, setLocationD
               tempMax: Math.round(temp_max),
               speed: speed.toFixed(2),
               pressure: pressure.toFixed(),
-              visibility
+              visibility: (visibility / 1000)
             },
             I: {
               temp: tempInFahrenheit,
@@ -60,7 +60,7 @@ export default async function fetchCity(lat, lng, setIsLoadingData, setLocationD
               tempMax: tempMaxInFahrenheit,
               speed: (speed / 1.6).toFixed(2),
               pressure: (pressure * 0.00014503773801).toFixed(),
-              visibility: (visibility / 1.6).toFixed()
+              visibility: ((visibility / 1000) / 1.6).toFixed()
             },
             humidity,
             weather,

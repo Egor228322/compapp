@@ -1,10 +1,21 @@
 import { useContext } from "react";
 import { ThemeContext } from "../App"
 
+//By far the ugliest functional component and is the only reusable one
+//Didn't want to think on this one too hard, so made the code as dirty as possible
+//accepts role: open, theme, units
+//data1: string uninque to each button
+//data12: string uninque to each button
+//onClick: handler function unique to each button
 export default function Button({ role, data1, data2, onClick }) {
 
     const { theme } = useContext(ThemeContext);
 
+
+    //Return jsx using a ternary operator
+    //First option is if the button is for setting favorites or history to be rendered
+    //Second option is if the button is for setting light mode or dark mode
+    //Third option is if the button is for setting the units: metric or imperial
     return (
         <div
             className={`btn-container ${role}`}
